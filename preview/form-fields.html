@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>body{margin:0;padding:22px;background:var(--bg-page);font-family:var(--font-sans);color:var(--fg-primary);display:flex;flex-direction:column;gap:12px;max-width:360px}
+label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--fg-secondary)}
+input,textarea,select{font-family:var(--font-sans);font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid var(--earth-bark);background:var(--paper-pure);color:var(--fg-primary);outline:none;box-shadow:2px 2px 0 0 var(--shadow-card)}
+input:focus,textarea:focus,select:focus{border-color:var(--trail-clay);box-shadow:2px 2px 0 0 var(--trail-clay)}
+.chk{display:flex;gap:8px;align-items:center;font-weight:400;flex-direction:row;font-size:14px;color:var(--fg-primary)}
+</style></head><body>
+<label>Name<input placeholder="Adam J." /></label>
+<label>Message<textarea rows="3" placeholder="Tell me about the project..."></textarea></label>
+<label>Project type
+<select><option>Design system</option><option>iOS app</option><option>Marketing site</option></select></label>
+<label class="chk"><input type="checkbox" checked /> Send me occasional updates</label>
+</body></html>

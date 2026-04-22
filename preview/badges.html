@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-sans);color:var(--fg-primary)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.lbl{font-family:var(--font-code);font-size:11px;color:var(--fg-muted);min-width:90px}
+.badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--earth-bark)}
+.b-def{background:var(--earth-dune);color:var(--earth-soil)}
+.b-acc{background:var(--trail-clay);color:var(--earth-sand)}
+.b-out{background:transparent;color:var(--earth-bark)}
+.b-moss{background:var(--trail-moss);color:var(--earth-sand);border-color:var(--trail-moss)}
+.dark{background:var(--earth-soil);padding:12px;border-radius:8px;display:flex;gap:10px;margin-top:6px}
+.b-dark{background:var(--earth-sand);color:var(--earth-soil)}
+</style></head><body>
+<div class="row"><span class="lbl">default</span><span class="badge b-def">Default</span><span class="badge b-def">new</span><span class="badge b-def">2026</span></div>
+<div class="row"><span class="lbl">accent</span><span class="badge b-acc">Accent</span><span class="badge b-acc">live</span></div>
+<div class="row"><span class="lbl">outline</span><span class="badge b-out">Outline</span><span class="badge b-out">draft</span></div>
+<div class="row"><span class="lbl">moss</span><span class="badge b-moss">Moss</span><span class="badge b-moss">shipped</span></div>
+<div class="row"><span class="lbl">on dark</span><div class="dark"><span class="badge b-dark">On dark</span><span class="badge b-acc">accent</span></div></div>
+</body></html>

@@ -1,0 +1,260 @@
+/* ============================================================
+   Trail Peak Design System — Foundations
+   Colors & Typography tokens + semantic bindings.
+   ============================================================ */
+
+/* Local brand fonts */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Code';
+  src: url('fonts/FiraCode-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pirata One';
+  src: url('fonts/PirataOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Google Fonts — body (Inter), mono (Fira Code), display (Pirata One substitute, flagged). */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Pirata+One&display=swap');
+
+:root {
+  /* ---------- Brand palette (earth / trail) ---------- */
+  --earth-bark:     rgb(74, 52, 38);   /* deepest brown — body text, borders */
+  --earth-soil:     rgb(45, 31, 18);   /* near-black soil — headings */
+  --earth-stone:    rgb(107, 93, 82);  /* warm grey text */
+  --earth-sand:     rgb(245, 241, 232);/* page background / cream */
+  --earth-dune:     rgb(232, 220, 200);/* secondary background */
+  --earth-tan:      rgb(201, 184, 154);/* tertiary / code bg */
+
+  --trail-moss:     rgb(90, 107, 79);  /* muted forest green */
+  --trail-sage:     rgb(134, 169, 148);/* lighter sage accent */
+  --trail-clay:     rgb(211, 95, 61);  /* burnt orange / trail marker */
+  --trail-ember:    rgb(179, 74, 45);  /* deeper clay — primary button */
+
+  --ink-pure:       rgb(0, 0, 0);
+  --paper-pure:     rgb(255, 255, 255);
+
+  /* ---------- Shadow tokens (soft earth) ---------- */
+  --shadow-soft:    rgba(45, 31, 18, 0.08);
+  --shadow-card:    rgba(45, 31, 18, 0.15);
+  --shadow-deep:    rgba(45, 31, 18, 0.25);
+
+  /* ---------- Semantic colors ---------- */
+  --fg-primary:           var(--earth-soil);  /* primary text */
+  --fg-secondary:           var(--earth-bark);  /* secondary text */
+  --fg-muted:           var(--earth-stone); /* muted text */
+  --fg-inverse:     var(--earth-sand);
+
+  --bg-page:           var(--earth-sand);  /* page */
+  --bg-secondary:           var(--earth-dune);  /* raised surface */
+  --bg-3:           var(--earth-tan);   /* code / chip */
+  --bg-dark:        var(--earth-soil);
+
+  --accent:         var(--trail-clay);
+  --accent-strong:  var(--trail-ember);
+  --accent-alt:     var(--trail-moss);
+
+  --border:         var(--earth-bark);
+  --border-subtle:  rgba(74, 52, 38, 0.15);
+
+  /* ---------- Typography families ---------- */
+  --font-sans:      'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif:     'Playfair Display', ui-serif, Georgia, serif;
+  --font-display:   'Pirata One', 'Playfair Display', serif;
+  --font-code:      'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-family-code: var(--font-code); /* alias used in Figma */
+
+  /* ---------- Type scale (px) ---------- */
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-32: 32px;
+  --fs-48: 48px;
+  --fs-64: 64px;
+  --fs-80: 80px;
+  --fs-96: 96px;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+
+  /* ---------- Radii ---------- */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-pill: 100%;
+
+  /* ---------- Motion ---------- */
+  --ease-trail:   cubic-bezier(.22, .61, .36, 1);
+  --dur-fast:     120ms;
+  --dur-med:      220ms;
+  --dur-slow:     360ms;
+
+  /* ---------- Text aliases (semantic) ---------- */
+  --text-primary:   var(--fg-primary);
+  --text-secondary: var(--fg-secondary);
+  --text-muted:     var(--fg-muted);
+}
+
+/* ---------- Semantic text styles ---------- */
+.display,
+.tp-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-96);
+  line-height: 1;
+  letter-spacing: 2px;
+  color: var(--fg-primary);
+  font-weight: 400;
+}
+.h1, .tp-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-48);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--fg-primary);
+}
+.h2, .tp-h2 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-32);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--fg-primary);
+}
+.h3, .tp-h3 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-24);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--fg-primary);
+}
+.h4, .tp-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-20);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--fg-primary);
+}
+.h5, .tp-h5 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-18);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--fg-primary);
+}
+.h6, .tp-h6 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--fg-secondary);
+}
+.body-lg, .tp-body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--fs-18);
+  line-height: 1.55;
+  color: var(--fg-primary);
+}
+.body, .tp-body, p {
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  line-height: 1.55;
+  color: var(--fg-primary);
+}
+.body-sm, .tp-body-sm, small {
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  line-height: 1.5;
+  color: var(--fg-secondary);
+}
+.caption, .tp-caption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  line-height: 1.4;
+  color: var(--fg-muted);
+}
+.code, .tp-code, code, pre {
+  font-family: var(--font-code);
+  font-size: var(--fs-14);
+  color: var(--fg-primary);
+}
+.code-inline {
+  font-family: var(--font-code);
+  font-size: var(--fs-14);
+  background: var(--earth-tan);
+  border-radius: var(--radius-md);
+  padding: 1px 6px;
+  color: var(--fg-primary);
+}
+.code-block {
+  font-family: var(--font-code);
+  font-size: var(--fs-14);
+  background: var(--earth-tan);
+  border: 1px solid var(--trail-moss);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  color: var(--fg-primary);
+  white-space: pre;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--trail-moss);
+}

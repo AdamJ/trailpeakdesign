@@ -9,7 +9,10 @@ An outdoor-themed design system for portfolio, marketing and app surfaces by Ada
 Trail Peak supports a small family of surfaces built and maintained by Adam Jolicoeur (AdamJolicoeur.com):
 
 - **Portfolio & marketing site** — long-form case studies, blog, and links.
+  - [marketing](/ui_kits/marketing_site/index.html)
+  - [previews](/PREVIEWS.md)
 - **Companion iOS apps** — Time Tracker Pro, The Magic Collection, etc. Same color / type foundations, native controls.
+  - [iOS](/ui_kits/ios_app/index.html)
 - **Social / share cards** — 1600×1200 posters using display type and product screenshots.
 
 ## Index
@@ -23,7 +26,7 @@ Trail Peak supports a small family of surfaces built and maintained by Adam Joli
 
 ## Sources
 
-- **Figma** — *Trail Peak Design Library* (mounted virtual FS). Pages: Cover, Badge, Buttons, Cards, Code, Divider, Footer, Icons, Link, List, Navigation, Page, Sections, Texts, Social.
+- **Figma** — _Trail Peak Design Library_ (mounted virtual FS). Pages: Cover, Badge, Buttons, Cards, Code, Divider, Footer, Icons, Link, List, Navigation, Page, Sections, Texts, Social.
 - **GitHub** — `AdamJ/trailpeakdesign` (private; App install was prompted but not completed this session — I worked from Figma + uploaded assets).
 - **Uploads** — `uploads/Jolicoeur_Icon-App-iTunes.png` (the triangular mark, now at `assets/logo-app-icon.png`).
 
@@ -40,12 +43,12 @@ The Figma pseudocode was the source of truth for colors, type, spacing, and comp
 - **Emoji:** None in product UI. Occasional in casual writing or social posts, but the design system itself is emoji-free.
 - **Punctuation:** Em dashes are encouraged. Oxford commas always. Avoid exclamation marks.
 - **Numbers:** Spell out one-to-nine in prose; figures for 10+ and for stats.
-- **Links:** Verbs, not "click here" — "*Read the case study*", "*Download the PDF*".
+- **Links:** Verbs, not "click here" — "_Read the case study_", "_Download the PDF_".
 - **Headlines:** Serif, declarative, short — "Design for the field." "Built for long seasons." Not hype-laden.
 - **Microcopy examples:**
-  - Primary CTA: *Start a project*, *Read the case study*, *See the work*
-  - Empty state: *Nothing here yet — pitch your first note above.*
-  - Error: *That didn't take. Try again in a moment.*
+  - Primary CTA: _Start a project_, _Read the case study_, _See the work_
+  - Empty state: _Nothing here yet — pitch your first note above._
+  - Error: _That didn't take. Try again in a moment._
 
 ---
 
@@ -55,6 +58,7 @@ The Figma pseudocode was the source of truth for colors, type, spacing, and comp
 Every screen sits on a cream (`#F5F1E8 / earth-sand`) with deeper browns for text and borders and a single burnt-orange accent (`#D35F3D / trail-clay`) for interaction. Green (`#5A6B4F / trail-moss`) is a secondary accent reserved for subdued navigation elements, code outlines, and secondary-button shadows. Black is avoided — the darkest ink is `#2D1F12 / earth-soil`, a near-black brown that feels warmer on cream.
 
 **Backgrounds.**
+
 - Primary: flat cream (`--bg-page`), never pure white.
 - Secondary pages and hero moments: vertical gradient `earth-sand → earth-dune` (top-to-bottom).
 - Dark examples: solid `earth-soil`, with cream text on top.
@@ -62,7 +66,8 @@ Every screen sits on a cream (`#F5F1E8 / earth-sand`) with deeper browns for tex
 - Imagery, when present, is warm-toned (sunrise / dusk / campfire casts) — never cool or b&w.
 
 **Typography.**
-- **Display** — `Pirata One` at 80–96px for oversized poster moments (social cards, landing hero headlines). Letter-spacing +2px.is the desired display face or swap.*
+
+- **Display** — `Pirata One` at 80–96px for oversized poster moments (social cards, landing hero headlines). Letter-spacing +2px.is the desired display face or swap.\*
 - **Serif** — `Playfair Display` (SemiBold, Bold) for H1–H3. Warm, editorial.
 - **Sans** — `Inter` 400/600/700 for body, H4–H6, UI.
 - **Code** — `Fira Code` 400 for inline and block code.
@@ -72,6 +77,7 @@ Every screen sits on a cream (`#F5F1E8 / earth-sand`) with deeper browns for tex
 **Borders.** Everything uses a 1px `earth-bark` hairline; dashed purple borders in Figma are layout-only (never render). Cards and buttons have crisp 1px strokes.
 
 **Corner radii.**
+
 - Buttons `12px` (`--radius-lg`)
 - Cards & surfaces `20px` (`--radius-xl`)
 - Small chips/code `8px` (`--radius-md`)
@@ -79,14 +85,16 @@ Every screen sits on a cream (`#F5F1E8 / earth-sand`) with deeper browns for tex
 
 **Shadow system — offset "sticker" drops, not blur.**
 The signature visual move: flat, offset box-shadows that look like stacked paper. Two variants:
+
 - `4px 4px 0 0 earth-bark` — resting buttons / small cards
 - `8px 8px 0 0 rgba(45,31,18,0.25)` — default card resting
-- `12px 12px 0 0 rgba(45,31,18,0.25)` — card hover (shadow *grows* instead of lifts)
+- `12px 12px 0 0 rgba(45,31,18,0.25)` — card hover (shadow _grows_ instead of lifts)
 - Layered moss + bark double-drop for the "Open Source" hero card (`12px 12px 0 5px bark, 12px 12px 0 0 moss`)
 
 Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 
 **Hover / press states.**
+
 - **Hover:** accent color swaps (primary button keeps fill, text tints to `earth-dune`; secondary button swaps `sand → tan`; nav link underlines `trail-clay`; card grows its shadow by 4px).
 - **Press:** shadow collapses to `2px 2px 0 0` — the surface "settles into the paper".
 - Never opacity-fade; always a deliberate color or offset change.
@@ -96,6 +104,7 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 **Transparency / blur.** Only on `btn-outline` — `backdrop-filter: blur(24px)` for a light, tactile outline pill. Otherwise opaque.
 
 **Layout rules.**
+
 - Desktop canvas 1728px wide in Figma; design against 1200px content width with 160px side gutters on landing pages.
 - Centered, single-column hero with caption + display type + primary card.
 - Footer is full-width on `earth-soil`.
@@ -116,7 +125,7 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 
 ## Repository index
 
-```
+```mermaid
 /
 ├── README.md                        ← you are here
 ├── SKILL.md                         ← Agent Skills entry (user-invocable)
@@ -153,4 +162,3 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 
 - **Pirata One, Playfair Display, Inter, Fira Code** — all loaded locally from `fonts/` (variable fonts where available).
 - **Icon font** substituted to Phosphor CDN (same family as the Figma "v7-icon free" component).
-- **GitHub repo** inaccessible this session — the App install banner was surfaced; foundations here came from Figma alone. Reinstall the GitHub App and re-run to pull component source and validate.
