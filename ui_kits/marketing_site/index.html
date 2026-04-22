@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Trail Peak — Marketing Site</title>
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  html,body{margin:0;padding:0;background:#F5F1E8;min-height:100vh;font-family:var(--font-sans);color:var(--fg-primary)}
+  *{box-sizing:border-box}
+  .page{max-width:1200px;margin:0 auto;padding:24px 40px 80px}
+  a{color:inherit;text-decoration:none;cursor:pointer}
+  button{cursor:pointer;font-family:inherit}
+  /* Nav */
+  .tp-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;margin-bottom:48px;border-radius:999px;background:rgba(255,255,255,.4);border:1px solid var(--border-subtle);backdrop-filter:blur(12px)}
+  .tp-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-weight:700;font-size:18px}
+  .tp-brand img{width:28px;height:28px}
+  .tp-links{display:flex;gap:4px}
+  .tp-links a{padding:6px 14px;font-size:15px;border:1px solid transparent;border-radius:999px;transition:all .22s var(--ease-trail)}
+  .tp-links a.active{color:var(--trail-clay);border-color:var(--trail-clay)}
+  .tp-links a:hover{color:var(--trail-clay)}
+  /* Buttons */
+  .btn{font-size:16px;line-height:1;border-radius:12px;padding:12px 24px;transition:all .22s var(--ease-trail);border:none;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--trail-ember);border:4px solid var(--earth-bark);color:#fff;box-shadow:4px 4px 0 0 var(--earth-bark);font-weight:600}
+  .btn-primary:hover{box-shadow:2px 2px 0 0 var(--earth-bark);color:var(--earth-dune);transform:translate(2px,2px)}
+  .btn-secondary{background:var(--earth-sand);border:1px solid var(--earth-bark);color:var(--earth-soil);box-shadow:4px 4px 0 0 var(--trail-moss)}
+  .btn-secondary:hover{background:var(--earth-tan);box-shadow:2px 2px 0 0 var(--trail-moss);transform:translate(2px,2px)}
+  .btn-outline{background:transparent;border:1px solid var(--earth-bark);color:var(--earth-soil);backdrop-filter:blur(24px)}
+  .btn-outline:hover{background:rgba(255,255,255,.5)}
+  /* Card */
+  .tp-card{background:var(--earth-sand);border:1px solid var(--earth-bark);border-radius:20px;box-shadow:8px 8px 0 0 var(--shadow-deep);padding:24px;display:flex;flex-direction:column;gap:12px;transition:box-shadow .22s var(--ease-trail)}
+  .tp-card:hover{box-shadow:12px 12px 0 0 var(--shadow-deep)}
+  .tp-card .ph{height:160px;background:repeating-linear-gradient(135deg,var(--earth-dune) 0 12px,var(--earth-tan) 12px 24px);border:1px solid var(--earth-bark);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-code);font-size:12px;overflow:hidden}
+  .tp-card h3{margin:0;font-family:var(--font-serif);font-size:24px;color:var(--fg-primary)}
+  .tp-card p{margin:0;font-size:14px;color:var(--fg-secondary);line-height:1.55}
+  .tp-card .foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}
+  .tp-card .meta{font-family:var(--font-code);font-size:11px;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.08em}
+  .tp-card .link{font-weight:700;color:var(--trail-moss);text-decoration:underline;font-size:14px}
+  .tp-card .link:hover{color:var(--trail-clay)}
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:40px 0 72px}
+  .hero .display{font-family:var(--font-display);font-size:96px;line-height:.9;letter-spacing:2px;color:var(--earth-soil);margin:0 0 16px}
+  .hero .h1{font-family:var(--font-serif);font-size:48px;line-height:1.05;color:var(--earth-soil);margin:0 0 16px;font-weight:700}
+  .hero .lead{font-size:18px;line-height:1.55;color:var(--fg-secondary);margin:0 0 28px;max-width:44ch}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  /* Sections */
+  .tp-h2{font-family:var(--font-serif);font-size:32px;font-weight:600;margin:0 0 8px}
+  .tp-h2-wrap{text-align:center;padding:48px 0 24px;position:relative}
+  .tp-h2-wrap .border{height:1px;background:var(--earth-bark);width:40%;margin:8px auto 0;position:relative}
+  .tp-h2-wrap .border::after{content:"";position:absolute;left:50%;top:-3px;transform:translateX(-50%) rotate(45deg);width:7px;height:7px;background:var(--earth-bark)}
+  .tp-section-lead{text-align:center;font-size:18px;color:var(--fg-secondary);max-width:60ch;margin:0 auto 32px}
+  .card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card-row-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  /* Open source hero card */
+  .os-wrap{background:var(--earth-sand);border:1px solid var(--earth-bark);border-radius:20px;box-shadow:12px 12px 0 5px var(--earth-bark), 12px 12px 0 0 var(--trail-moss);padding:48px;margin:48px 0}
+  /* Footer */
+  .tp-footer{background:var(--earth-soil);color:var(--earth-sand);margin-top:64px;padding:56px 40px 36px}
+  .tp-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;align-items:flex-start}
+  .tp-footer .display{font-family:var(--font-display);letter-spacing:2px;font-size:56px;line-height:1}
+  .tp-footer h4{margin:0 0 10px;font-family:var(--font-serif);font-size:18px;color:var(--earth-sand);font-weight:600}
+  .tp-footer a{color:var(--earth-tan);font-size:14px;display:block;padding:3px 0}
+  .tp-footer a:hover{color:var(--trail-clay)}
+  .tp-footer .credit{font-size:12px;color:var(--earth-tan);opacity:.7;margin-top:16px}
+  /* Form */
+  .form{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,.45);border:1px solid var(--border-subtle);border-radius:20px;padding:28px;backdrop-filter:blur(8px);box-shadow:8px 8px 0 0 var(--shadow-card)}
+  .form label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--fg-secondary)}
+  .form input,.form textarea,.form select{font-family:var(--font-sans);font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid var(--earth-bark);background:var(--paper-pure);color:var(--fg-primary);outline:none}
+  .form input:focus,.form textarea:focus{border-color:var(--trail-clay)}
+  .toast{background:var(--trail-moss);color:var(--earth-sand);padding:12px 16px;border-radius:12px;font-weight:600;text-align:center}
+  /* Badges */
+  .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid var(--earth-bark);background:var(--earth-dune);color:var(--earth-soil)}
+  .badge.accent{background:var(--trail-clay);color:var(--earth-sand);border-color:var(--trail-clay)}
+  /* Post row */
+  .post{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--border-subtle);gap:24px;transition:all .22s var(--ease-trail)}
+  .post:hover{padding-left:8px;color:var(--trail-clay)}
+  .post h4{margin:0;font-family:var(--font-serif);font-size:20px;font-weight:600;color:inherit}
+  .post .meta{font-family:var(--font-code);font-size:11px;color:var(--fg-muted);white-space:nowrap}
+  /* About */
+  .about{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:flex-start}
+  .about .mark{width:100%;aspect-ratio:1;border:1px solid var(--earth-bark);border-radius:20px;background:var(--earth-sand);box-shadow:8px 8px 0 0 var(--shadow-deep);display:flex;align-items:center;justify-content:center}
+  .about .mark img{width:60%;height:60%;object-fit:contain}
+  .about p{font-size:17px;line-height:1.65;color:var(--fg-primary)}
+</style>
+</head>
+<body>
+<div id="root" data-screen-label="01 Home"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+function Nav({ screen, setScreen }) {
+  const items = ['Home','Work','Writing','About','Contact'];
+  return (
+    <nav className="tp-nav">
+      <a className="tp-brand" onClick={() => setScreen('Home')}>
+        <img src="../../assets/logo-app-icon.png" alt="" />Trail Peak
+      </a>
+      <div className="tp-links">
+        {items.map(i => (
+          <a key={i} className={screen === i ? 'active' : ''} onClick={() => setScreen(i)}>{i}</a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+function Card({ eyebrow, title, body, meta, link, icon }) {
+  return (
+    <div className="tp-card">
+      <div className="ph"><i className={`ph ${icon || 'ph-mountains'}`} style={{fontSize:40,color:'var(--trail-moss)'}}></i></div>
+      {eyebrow && <span className="badge">{eyebrow}</span>}
+      <h3>{title}</h3>
+      <p>{body}</p>
+      <div className="foot"><span className="meta">{meta}</span><a className="link">{link} →</a></div>
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <div className="hero">
+      <div>
+        <h1 className="display">Follow the trail.</h1>
+        <p className="lead">I'm Adam — a lead product designer working on design systems, enterprise tools, and small iOS apps. 15+ years. Built slow, shipped steady.</p>
+        <div className="cta-row">
+          <button className="btn btn-primary"><i className="ph ph-compass" style={{fontSize:18}}></i>See the work</button>
+          <button className="btn btn-secondary">Read the journal</button>
+        </div>
+      </div>
+      <Card
+        eyebrow="Featured"
+        title="Time Tracker Pro"
+        body="A quiet iOS app for solo consultants and small teams. Built around long seasons and patient invoicing."
+        meta="Case study · 8 min"
+        link="Read"
+        icon="ph-timer"
+      />
+    </div>
+  );
+}
+
+function TextWithCards({ h2, lead, cards }) {
+  return (
+    <>
+      <div className="tp-h2-wrap"><h2 className="tp-h2">{h2}</h2><div className="border"/></div>
+      <p className="tp-section-lead">{lead}</p>
+      <div className="card-row">{cards.map((c,i) => <Card key={i} {...c} />)}</div>
+    </>
+  );
+}
+
+function OpenSource() {
+  return (
+    <div className="os-wrap">
+      <div className="tp-h2-wrap" style={{paddingTop:0}}><h2 className="tp-h2">Open Source</h2><div className="border"/></div>
+      <p className="tp-section-lead">Small tools I've pushed to GitHub for the community — mostly design-tokens, 11ty templates, and Figma widgets.</p>
+      <div className="card-row">
+        <Card title="figma-todo-widget" body="A minimal todo widget for Figma files. Drag, check, reorder." meta="GitHub · 127★" link="View" icon="ph-check-square"/>
+        <Card title="11ty-email-generator" body="Build responsive email templates with inlined CSS using 11ty." meta="GitHub · 64★" link="View" icon="ph-envelope"/>
+        <Card title="trailpeakdesign" body="The tokens and components that power this site." meta="GitHub · 41★" link="View" icon="ph-path"/>
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="tp-footer">
+      <div className="tp-footer-inner">
+        <div>
+          <div className="display">Trail Peak</div>
+          <div className="credit">© 2026 Adam Jolicoeur. Built slow, shipped steady.</div>
+        </div>
+        <div><h4>Work</h4><a>Case studies</a><a>iOS apps</a><a>Open source</a></div>
+        <div><h4>Writing</h4><a>Journal</a><a>Weeknotes</a><a>RSS</a></div>
+        <div><h4>Contact</h4><a>Email</a><a>LinkedIn</a><a>GitHub</a><a>Mastodon</a></div>
+      </div>
+    </footer>
+  );
+}
+
+function HomeScreen() {
+  return (
+    <>
+      <Hero />
+      <TextWithCards
+        h2="Recent work"
+        lead="A few of the projects I've shipped in the last couple of seasons."
+        cards={[
+          { eyebrow:'iOS', title:'The Magic Collection', body:'A card collection tracker for Magic: The Gathering. Native iOS, offline-first.', meta:'2025 · Swift', link:'Read', icon:'ph-cards' },
+          { eyebrow:'Web', title:'Chore Tracker', body:'A privacy-first chore tracker for families. IndexedDB, no server.', meta:'2025 · React', link:'Read', icon:'ph-house' },
+          { eyebrow:'Tokens', title:'PatternFly Tokens', body:'Design tokens for an enterprise component library. Figma ↔ code sync.', meta:'2024 · RH', link:'Read', icon:'ph-palette' },
+        ]}
+      />
+      <OpenSource />
+    </>
+  );
+}
+
+function WorkScreen() {
+  const items = [
+    { eyebrow:'2025 · iOS', title:'Time Tracker Pro', body:'A quiet app for invoices and timers. Shipped to TestFlight Q1.', meta:'12 min read', link:'Open', icon:'ph-timer' },
+    { eyebrow:'2025 · iOS', title:'The Magic Collection', body:'Offline-first card tracker. 15k downloads.', meta:'8 min read', link:'Open', icon:'ph-cards' },
+    { eyebrow:'2024 · Web', title:'PatternFly Design Tokens', body:'Token pipeline for a 400-component system.', meta:'14 min read', link:'Open', icon:'ph-palette' },
+    { eyebrow:'2024 · Web', title:'Backstage Plugin Library', body:'UI for managing dynamic plugins at RHDH.', meta:'10 min read', link:'Open', icon:'ph-plug' },
+    { eyebrow:'2023 · iOS', title:'Chore Tracker', body:'Family chores, IndexedDB, zero servers.', meta:'6 min read', link:'Open', icon:'ph-house' },
+    { eyebrow:'2023 · Brand', title:'Studio Jolicoeur', body:'Personal brand refresh & landing page.', meta:'4 min read', link:'Open', icon:'ph-compass' },
+  ];
+  return (
+    <>
+      <div className="tp-h2-wrap"><h2 className="tp-h2">Work</h2><div className="border"/></div>
+      <p className="tp-section-lead">A selection, roughly reverse-chronological.</p>
+      <div className="card-row">{items.map((c,i) => <Card key={i} {...c} />)}</div>
+    </>
+  );
+}
+
+function WritingScreen() {
+  const posts = [
+    ['The case for slow shipping','Mar 2026','12 min'],
+    ['Designing tokens for two eras at once','Feb 2026','9 min'],
+    ['What I learned writing my first iOS app','Jan 2026','14 min'],
+    ['A small theory of card shadows','Dec 2025','6 min'],
+    ['The field-notes approach to design docs','Nov 2025','8 min'],
+    ['Why I stopped using blurred shadows','Oct 2025','5 min'],
+  ];
+  return (
+    <>
+      <div className="tp-h2-wrap"><h2 className="tp-h2">Writing</h2><div className="border"/></div>
+      <p className="tp-section-lead">Field notes from the work. Mostly monthly, occasionally weekly.</p>
+      <div style={{maxWidth:720,margin:'0 auto'}}>
+        {posts.map(([t,d,r],i) => (
+          <a className="post" key={i}><h4>{t}</h4><span className="meta">{d} · {r}</span></a>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function AboutScreen() {
+  return (
+    <>
+      <div className="tp-h2-wrap"><h2 className="tp-h2">About</h2><div className="border"/></div>
+      <div className="about" style={{maxWidth:960,margin:'0 auto'}}>
+        <div className="mark"><img src="../../assets/logo-app-icon.png" alt=""/></div>
+        <div>
+          <p>I'm Adam Jolicoeur — a lead product designer based in the northeast. I've spent 15+ years designing enterprise tools and design systems, including time at AWS, Red Hat, and a handful of smaller places where I got to ship more of the thing.</p>
+          <p>Trail Peak is where my work, apps, and writing live. If you'd like to collaborate, the contact form is below.</p>
+          <div style={{marginTop:16,display:'flex',gap:10,flexWrap:'wrap'}}>
+            <span className="badge">Design systems</span>
+            <span className="badge">iOS</span>
+            <span className="badge">Tokens</span>
+            <span className="badge accent">Hire me</span>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ContactScreen() {
+  const [sent, setSent] = useState(false);
+  return (
+    <>
+      <div className="tp-h2-wrap"><h2 className="tp-h2">Get in touch</h2><div className="border"/></div>
+      <p className="tp-section-lead">The quickest way to reach me. I read everything and reply within a few days.</p>
+      {sent ? (
+        <div className="form"><div className="toast"><i className="ph-fill ph-check-circle" style={{marginRight:8}}></i>Thanks — I'll be in touch.</div></div>
+      ) : (
+        <form className="form" onSubmit={e => { e.preventDefault(); setSent(true); }}>
+          <label>Name<input required placeholder="Adam J."/></label>
+          <label>Email<input required type="email" placeholder="you@example.com"/></label>
+          <label>Project type<select><option>Design system</option><option>iOS app</option><option>Marketing site</option><option>Something else</option></select></label>
+          <label>Message<textarea rows="4" required placeholder="Tell me about the project..."></textarea></label>
+          <button type="submit" className="btn btn-primary" style={{alignSelf:'flex-start'}}><i className="ph ph-paper-plane"></i>Send</button>
+        </form>
+      )}
+    </>
+  );
+}
+
+function App() {
+  const [screen, setScreen] = useState(() => localStorage.getItem('tp-screen') || 'Home');
+  const go = (s) => { setScreen(s); localStorage.setItem('tp-screen', s); };
+  return (
+    <>
+      <div className="page">
+        <Nav screen={screen} setScreen={go} />
+        {screen === 'Home' && <HomeScreen />}
+        {screen === 'Work' && <WorkScreen />}
+        {screen === 'Writing' && <WritingScreen />}
+        {screen === 'About' && <AboutScreen />}
+        {screen === 'Contact' && <ContactScreen />}
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

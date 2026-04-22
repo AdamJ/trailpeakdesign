@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:28px;background:var(--bg-page);font-family:var(--font-sans);color:var(--fg-primary)}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.lbl{font-family:var(--font-code);font-size:11px;color:var(--fg-muted);min-width:100px}
+.btn{font-family:var(--font-sans);font-size:16px;line-height:1;border-radius:12px;padding:12px 24px;cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1);font-weight:600}
+
+/* Primary: 4px border, shadow collapses on hover */
+.btn-primary{background:var(--trail-ember);border:4px solid var(--earth-bark);color:#fff;box-shadow:4px 4px 0 0 var(--earth-bark)}
+.btn-primary:hover,.btn-primary.is-hover{box-shadow:2px 2px 0 0 var(--earth-bark);color:var(--earth-dune);transform:translate(2px,2px)}
+
+/* Secondary: 4px border, shadow collapses on hover */
+.btn-secondary{background:var(--earth-sand);border:4px solid var(--earth-bark);color:var(--earth-soil);box-shadow:4px 4px 0 0 var(--trail-moss)}
+.btn-secondary:hover,.btn-secondary.is-hover{background:var(--earth-tan);box-shadow:2px 2px 0 0 var(--trail-moss);transform:translate(2px,2px)}
+
+/* Outline */
+.btn-outline{background:transparent;border:1px solid var(--earth-bark);color:var(--earth-soil);backdrop-filter:blur(24px)}
+.btn-outline:hover{background:rgba(255,255,255,.5)}
+
+/* Icon: 4px border, always */
+.btn-icon{width:56px;height:56px;padding:0;border-radius:50%;border:4px solid var(--earth-bark);background:transparent;display:inline-flex;align-items:center;justify-content:center;color:var(--earth-soil);cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1)}
+.btn-icon:hover,.btn-icon.is-hover{background:var(--earth-bark);color:var(--earth-sand)}
+
+/* Social: 4px border. #5A6B4F bg / #F5F1E8 text → #D35F3D bg / #2D1F12 text on hover */
+.btn-social{background:#5A6B4F;border:4px solid var(--earth-bark);color:#F5F1E8;font-size:14px;padding:10px 16px;border-radius:12px;font-weight:600;box-shadow:4px 4px 0 0 var(--earth-bark);cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1);display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans)}
+.btn-social:hover,.btn-social.is-hover{background:#D35F3D;color:#2D1F12;box-shadow:2px 2px 0 0 var(--earth-bark);transform:translate(2px,2px)}
+
+.tag{font-family:var(--font-code);font-size:10px;color:var(--fg-muted);margin-left:4px}
+</style></head><body>
+<div class="row"><span class="lbl">primary</span><button class="btn btn-primary">Button</button><button class="btn btn-primary is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
+<div class="row"><span class="lbl">secondary</span><button class="btn btn-secondary">Button</button><button class="btn btn-secondary is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
+<div class="row"><span class="lbl">outline</span><button class="btn btn-outline">Button</button></div>
+<div class="row"><span class="lbl">icon</span>
+  <button class="btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg></button>
+  <button class="btn-icon is-hover"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg></button>
+  <span class="tag">4px border</span>
+</div>
+<div class="row"><span class="lbl">social</span>
+  <button class="btn-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.92a8.22 8.22 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.19 8.19 0 0 1-2.6 1 4.1 4.1 0 0 0-7.1 3.74A11.65 11.65 0 0 1 3.4 4.86a4.1 4.1 0 0 0 1.27 5.48 4.08 4.08 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.58a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18 0-.35-.01-.53A8.35 8.35 0 0 0 22 5.92z"/></svg>Follow</button>
+  <button class="btn-social is-hover"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.92a8.22 8.22 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.19 8.19 0 0 1-2.6 1 4.1 4.1 0 0 0-7.1 3.74A11.65 11.65 0 0 1 3.4 4.86a4.1 4.1 0 0 0 1.27 5.48 4.08 4.08 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.58a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18 0-.35-.01-.53A8.35 8.35 0 0 0 22 5.92z"/></svg>Hover</button>
+  <span class="tag">4px border · #5A6B4F/#F5F1E8 → #D35F3D/#2D1F12</span>
+</div>
+</body></html>
