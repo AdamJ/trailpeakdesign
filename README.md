@@ -128,11 +128,13 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 ```mermaid
 /
 ├── README.md                        ← you are here
+├── PREVIEWS.md                      ← preview index
 ├── SKILL.md                         ← Agent Skills entry (user-invocable)
 ├── colors_and_type.css              ← tokens + semantic type classes
 ├── assets/
 │   └── logo-app-icon.png            ← triangular monogram
-├── preview/                         ← design-system cards (Design System tab)
+├── preview/                         ← design-system token previews
+│   ├── preview.html                 ← index
 │   ├── colors-primary.html          ← earth / trail swatches
 │   ├── colors-neutral.html
 │   ├── colors-semantic.html
@@ -151,11 +153,18 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 │   ├── footer.html
 │   ├── icons.html
 │   └── logo.html
+├── social/                          ← 1600×1200 share / OG cards
+│   └── index.html                   ← brand, app, and case-study card templates
 └── ui_kits/
-    └── marketing_site/
+    ├── marketing_site/
+    │   ├── README.md
+    │   └── index.html               ← click-thru of the portfolio site (JSX inline)
+    └── ios_app/
         ├── README.md
-        ├── index.html               ← click-thru of the portfolio site
-        └── *.jsx                    ← page-level components
+        ├── index.html               ← click-thru of Time Tracker Pro
+        ├── ios-frame.jsx            ← device bezel, status bar, keyboard
+        ├── screens.jsx              ← Projects, Timer, New Entry, Reports, Settings
+        └── controls.jsx             ← native iOS control showcase
 ```
 
 ## Caveats & substitutions

@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trail Peak Design — Social &amp; Share Cards</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      html, body {
+        margin: 0; padding: 0;
+        background: #f5f1e8;
+        min-height: 100vh;
+        font-family: var(--font-sans);
+        color: var(--fg-primary);
+      }
+      * { box-sizing: border-box; }
+
+      .stage {
+        padding: 48px 40px 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+      }
+      .stage-header { text-align: center; }
+      .stage-title {
+        font-family: var(--font-display);
+        font-size: 56px;
+        letter-spacing: 2px;
+        color: var(--earth-soil);
+        line-height: 1;
+        margin: 0 0 8px;
+      }
+      .stage-sub {
+        font-family: var(--font-serif);
+        font-size: 18px;
+        color: var(--fg-secondary);
+        margin: 0;
+      }
+      .card-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .card-lbl {
+        font-family: var(--font-code);
+        font-size: 11px;
+        color: var(--fg-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      /* Shows the 1600×1200 card at 50% (800×600 display) */
+      .card-viewport {
+        width: 800px;
+        height: 600px;
+        overflow: hidden;
+        border: 1px solid var(--earth-bark);
+        box-shadow: 8px 8px 0 0 rgba(45, 31, 18, 0.25);
+        border-radius: 4px;
+      }
+      .card {
+        width: 1600px;
+        height: 1200px;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* ── Shared card typography ── */
+      .card-eyebrow {
+        font-family: var(--font-code);
+        font-size: 24px;
+        color: var(--earth-stone);
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      .card-tagline {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 36px;
+        color: var(--earth-stone);
+        letter-spacing: .02em;
+      }
+      .card-rule {
+        height: 6px;
+        background: var(--trail-ember);
+        box-shadow: 5px 5px 0 0 var(--trail-clay);
+      }
+
+      /* ── Card 1: Brand (dark) ── */
+      .brand-card {
+        background: var(--earth-soil);
+        padding: 80px 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .brand-backdrop {
+        position: absolute;
+        right: -60px;
+        top: -120px;
+        font-family: var(--font-display);
+        font-size: 1000px;
+        line-height: 1;
+        color: var(--earth-bark);
+        opacity: 0.22;
+        pointer-events: none;
+        user-select: none;
+      }
+      .brand-name {
+        font-family: var(--font-serif);
+        font-size: 220px;
+        font-weight: 700;
+        line-height: .88;
+        color: var(--earth-sand);
+        letter-spacing: -4px;
+        position: relative;
+        z-index: 1;
+      }
+      .brand-chips {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 52px;
+        position: relative;
+        z-index: 1;
+      }
+      .brand-chip {
+        padding: 12px 28px;
+        border: 2px solid var(--earth-bark);
+        border-radius: 999px;
+        background: rgba(74, 52, 38, 0.45);
+        font-family: var(--font-code);
+        font-size: 22px;
+        color: var(--earth-tan);
+        letter-spacing: .08em;
+      }
+      .brand-wordmark {
+        font-family: var(--font-display);
+        font-size: 32px;
+        color: var(--earth-bark);
+        letter-spacing: 3px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── Card 2: App (light) ── */
+      .app-card {
+        background: var(--earth-sand);
+        display: flex;
+      }
+      .app-left {
+        flex: 1;
+        padding: 96px 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .app-title {
+        font-family: var(--font-display);
+        font-size: 176px;
+        line-height: .88;
+        color: var(--earth-soil);
+        letter-spacing: 2px;
+      }
+      .app-title .accent { color: var(--trail-ember); }
+      .app-subtitle {
+        font-family: var(--font-serif);
+        font-size: 34px;
+        color: var(--earth-bark);
+        line-height: 1.45;
+        max-width: 520px;
+      }
+      .app-rule {
+        width: 120px;
+        height: 6px;
+        background: var(--earth-bark);
+        margin: 52px 0 44px;
+        box-shadow: 5px 5px 0 0 var(--earth-stone);
+      }
+      .app-btns {
+        display: flex;
+        gap: 20px;
+        margin-top: 44px;
+      }
+      .app-btn-primary {
+        padding: 18px 40px;
+        background: var(--trail-ember);
+        color: var(--earth-sand);
+        border: 3px solid var(--earth-bark);
+        border-radius: 12px;
+        font-family: var(--font-code);
+        font-size: 22px;
+        font-weight: 600;
+        box-shadow: 5px 5px 0 0 var(--earth-bark);
+      }
+      .app-btn-outline {
+        padding: 18px 40px;
+        background: transparent;
+        color: var(--earth-soil);
+        border: 3px solid var(--earth-bark);
+        border-radius: 12px;
+        font-family: var(--font-code);
+        font-size: 22px;
+        box-shadow: 5px 5px 0 0 var(--earth-bark);
+      }
+      .app-url {
+        font-family: var(--font-code);
+        font-size: 22px;
+        color: var(--earth-stone);
+        letter-spacing: .1em;
+      }
+      .app-right {
+        width: 600px;
+        flex-shrink: 0;
+        background: var(--earth-dune);
+        border-left: 3px solid var(--earth-bark);
+        padding: 80px 52px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .app-right-title {
+        font-family: var(--font-serif);
+        font-size: 60px;
+        font-weight: 700;
+        color: var(--earth-soil);
+        line-height: 1;
+      }
+      .app-right-sub {
+        font-family: var(--font-code);
+        font-size: 18px;
+        color: var(--earth-stone);
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        margin-bottom: 8px;
+      }
+      .mock-card {
+        background: var(--earth-sand);
+        border: 2px solid var(--earth-bark);
+        border-radius: 18px;
+        box-shadow: 5px 5px 0 0 rgba(45, 31, 18, 0.75);
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .mock-swatch {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        border: 2px solid var(--earth-bark);
+        flex-shrink: 0;
+      }
+      .mock-name {
+        font-family: var(--font-serif);
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--earth-soil);
+        flex: 1;
+      }
+      .mock-active {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: var(--trail-ember);
+        margin-top: 3px;
+      }
+      .mock-hrs {
+        font-family: var(--font-code);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--earth-soil);
+      }
+
+      /* ── Card 3: Case Study (editorial) ── */
+      .case-card {
+        background: var(--earth-dune);
+        display: flex;
+        flex-direction: column;
+      }
+      .case-accent-bar {
+        height: 16px;
+        background: var(--trail-ember);
+        border-bottom: 3px solid var(--earth-bark);
+        flex-shrink: 0;
+      }
+      .case-body {
+        flex: 1;
+        padding: 72px 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .case-headline {
+        font-family: var(--font-serif);
+        font-size: 160px;
+        font-weight: 700;
+        color: var(--earth-soil);
+        line-height: .88;
+        letter-spacing: -3px;
+      }
+      .case-rule {
+        width: 200px;
+        height: 8px;
+        background: var(--trail-ember);
+        margin: 52px 0;
+        box-shadow: 5px 5px 0 0 var(--earth-bark);
+      }
+      .case-desc {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 44px;
+        color: var(--earth-bark);
+        line-height: 1.4;
+        max-width: 880px;
+      }
+      .case-bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      .case-tags {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .case-tag {
+        padding: 10px 24px;
+        background: var(--earth-soil);
+        color: var(--earth-sand);
+        border: 2px solid var(--earth-bark);
+        border-radius: 999px;
+        font-family: var(--font-code);
+        font-size: 20px;
+        letter-spacing: .08em;
+        box-shadow: 3px 3px 0 0 var(--earth-bark);
+      }
+      .case-right {
+        position: absolute;
+        right: 0; top: 16px; bottom: 0;
+        width: 380px;
+        background: var(--earth-tan);
+        border-left: 3px solid var(--earth-bark);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        padding: 60px 44px;
+      }
+      .case-role {
+        width: 100%;
+        padding: 16px 24px;
+        background: var(--earth-soil);
+        color: var(--earth-sand);
+        border: 3px solid var(--earth-bark);
+        border-radius: 12px;
+        font-family: var(--font-code);
+        font-size: 19px;
+        letter-spacing: .1em;
+        text-align: center;
+        box-shadow: 5px 5px 0 0 var(--earth-bark);
+      }
+      .case-stat {
+        width: 100%;
+        padding: 20px 24px;
+        background: var(--earth-sand);
+        border: 2px solid var(--earth-bark);
+        border-radius: 16px;
+        box-shadow: 4px 4px 0 0 rgba(45, 31, 18, 0.7);
+        text-align: center;
+      }
+      .case-stat-n {
+        font-family: var(--font-serif);
+        font-size: 72px;
+        font-weight: 700;
+        color: var(--earth-soil);
+        line-height: 1;
+      }
+      .case-stat-label {
+        font-family: var(--font-code);
+        font-size: 17px;
+        color: var(--earth-stone);
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="stage-header">
+        <h1 class="stage-title">Trail Peak Design</h1>
+        <p class="stage-sub">Social &amp; Share Cards · 1600 × 1200</p>
+      </div>
+
+      <!-- ── Card 1: Brand (dark) ────────────────────────────── -->
+      <div class="card-wrap">
+        <div class="card-viewport">
+          <div class="card brand-card">
+            <div class="brand-backdrop" aria-hidden="true">J</div>
+
+            <p class="card-eyebrow" style="position: relative; z-index: 1; color: var(--earth-stone);">adamjolicoeur.me</p>
+
+            <div style="position: relative; z-index: 1;">
+              <p class="brand-name">Adam<br>Jolicoeur</p>
+              <div class="card-rule" style="width: 160px; margin: 48px 0 40px;"></div>
+              <div class="brand-chips">
+                <span class="brand-chip">Lead Product Designer</span>
+                <span class="brand-chip">Product Manager</span>
+                <span class="brand-chip">AWS · Red Hat · PatternFly</span>
+              </div>
+              <p class="card-tagline" style="color: var(--earth-stone);">Follow the trail. Pitch the tent. Ship the work.</p>
+            </div>
+
+            <p class="brand-wordmark">Trail Peak</p>
+          </div>
+        </div>
+        <p class="card-lbl">Brand · dark · adamjolicoeur.me</p>
+      </div>
+
+      <!-- ── Card 2: App (Time Tracker Pro) ─────────────────── -->
+      <div class="card-wrap">
+        <div class="card-viewport">
+          <div class="card app-card">
+            <div class="app-left">
+              <p class="card-eyebrow">Trail Peak Apps</p>
+
+              <div>
+                <p class="app-title">Time<br>Tracker<br><span class="accent">Pro</span></p>
+                <div class="app-rule"></div>
+                <p class="app-subtitle">Time tracking and invoicing built for the solo consultant.</p>
+                <div class="app-btns">
+                  <span class="app-btn-primary">App Store →</span>
+                  <span class="app-btn-outline">iOS 17+</span>
+                </div>
+              </div>
+
+              <p class="app-url">timetrackerpro.adamjolicoeur.me</p>
+            </div>
+
+            <div class="app-right">
+              <p class="app-right-title">Projects</p>
+              <p class="app-right-sub">Week 16 · 31.8 hrs</p>
+
+              <div class="mock-card">
+                <div class="mock-swatch" style="background: var(--trail-ember);"></div>
+                <div>
+                  <p class="mock-name">Time Tracker Pro</p>
+                  <p class="mock-active">● Active</p>
+                </div>
+                <span class="mock-hrs">18.5h</span>
+              </div>
+              <div class="mock-card">
+                <div class="mock-swatch" style="background: var(--trail-moss);"></div>
+                <p class="mock-name">PatternFly Tokens</p>
+                <span class="mock-hrs">9.5h</span>
+              </div>
+              <div class="mock-card">
+                <div class="mock-swatch" style="background: var(--trail-clay);"></div>
+                <p class="mock-name">Magic Collection</p>
+                <span class="mock-hrs">3.75h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-lbl">App · light · Time Tracker Pro</p>
+      </div>
+
+      <!-- ── Card 3: Case Study (editorial) ────────────────── -->
+      <div class="card-wrap">
+        <div class="card-viewport">
+          <div class="card case-card">
+            <div class="case-accent-bar"></div>
+
+            <div class="case-body">
+              <p class="card-eyebrow">Case Study · Red Hat · 2023–2024</p>
+
+              <div>
+                <p class="case-headline">PatternFly<br>Tokens</p>
+                <div class="case-rule"></div>
+                <p class="case-desc">Architecting a cross-platform design token system for Red Hat's open-source enterprise design language.</p>
+              </div>
+
+              <div class="case-bottom">
+                <div class="case-tags">
+                  <span class="case-tag">Design System</span>
+                  <span class="case-tag">Tokens</span>
+                  <span class="case-tag">Figma</span>
+                  <span class="case-tag">Open Source</span>
+                </div>
+                <span style="font-family: var(--font-display); font-size: 34px; color: var(--earth-stone); letter-spacing: 2px;">Trail Peak</span>
+              </div>
+            </div>
+
+            <div class="case-right">
+              <p class="case-role">Lead Product Designer</p>
+              <div class="case-stat">
+                <p class="case-stat-n">4</p>
+                <p class="case-stat-label">platforms</p>
+              </div>
+              <div class="case-stat">
+                <p class="case-stat-n">800+</p>
+                <p class="case-stat-label">tokens shipped</p>
+              </div>
+              <div class="case-stat">
+                <p class="case-stat-n">12</p>
+                <p class="case-stat-label">contributors</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-lbl">Case Study · editorial · PatternFly Tokens</p>
+      </div>
+
+    </div>
+  </body>
+</html>
