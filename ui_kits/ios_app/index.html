@@ -1,88 +1,207 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Trail Peak — iOS App</title>
-<link rel="stylesheet" href="../../colors_and_type.css" />
-<script src="https://unpkg.com/@phosphor-icons/web"></script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<style>
-  html,body{margin:0;padding:0;background:#F5F1E8;min-height:100vh;font-family:var(--font-sans);color:var(--fg-primary)}
-  *{box-sizing:border-box}
-  .stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:48px 24px;gap:24px}
-  .stage-title{font-family:var(--font-display);font-size:56px;letter-spacing:2px;color:var(--earth-soil);line-height:1;margin:0}
-  .stage-sub{font-family:var(--font-serif);font-size:18px;color:var(--fg-secondary);margin:0 0 12px}
-  .devices{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
-  .device-wrap{display:flex;flex-direction:column;gap:12px;align-items:center}
-  .device-lbl{font-family:var(--font-code);font-size:11px;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.08em}
-  .nav-pills{display:flex;gap:8px;padding:12px 20px;background:rgba(255,255,255,.45);border:1px solid var(--border-subtle);border-radius:999px;backdrop-filter:blur(12px)}
-  .nav-pill{padding:6px 16px;border-radius:999px;font-size:14px;cursor:pointer;border:none;background:transparent;color:var(--fg-secondary);font-family:var(--font-sans);transition:all .22s var(--ease-trail)}
-  .nav-pill.active{background:var(--trail-ember);color:#fff;font-weight:600}
-</style>
-</head>
-<body>
-<div id="root" data-screen-label="iOS App"></div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Trail Peak Design — iOS App</title>
+    <link rel="stylesheet" href="../../colors_and_type.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script
+      src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+      integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+      integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+      integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f5f1e8;
+        min-height: 100vh;
+        font-family: var(--font-sans);
+        color: var(--fg-primary);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .stage {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 24px;
+        gap: 24px;
+      }
+      .stage-title {
+        font-family: var(--font-display);
+        font-size: 56px;
+        letter-spacing: 2px;
+        color: var(--earth-soil);
+        line-height: 1;
+        margin: 0;
+      }
+      .stage-sub {
+        font-family: var(--font-serif);
+        font-size: 18px;
+        color: var(--fg-secondary);
+        margin: 0 0 12px;
+      }
+      .devices {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .device-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+      .device-lbl {
+        font-family: var(--font-code);
+        font-size: 11px;
+        color: var(--fg-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .nav-pills {
+        display: flex;
+        gap: 8px;
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.45);
+        border: 1px solid var(--border-subtle);
+        border-radius: 999px;
+        backdrop-filter: blur(12px);
+      }
+      .nav-pill {
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: var(--fg-secondary);
+        font-family: var(--font-sans);
+        transition: all 0.22s var(--ease-trail);
+      }
+      .nav-pill.active {
+        background: var(--trail-ember);
+        color: #fff;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-screen-label="iOS App"></div>
 
-<script type="text/babel" src="ios-frame.jsx"></script>
-<script type="text/babel" src="screens.jsx"></script>
-<script type="text/babel" src="controls.jsx"></script>
-<script type="text/babel">
-const { useState } = React;
+    <script type="text/babel" src="ios-frame.jsx"></script>
+    <script type="text/babel" src="screens.jsx"></script>
+    <script type="text/babel" src="controls.jsx"></script>
+    <script type="text/babel">
+      const { useState } = React;
 
-function App() {
-  const [screen, setScreen] = useState(() => localStorage.getItem('tp-ios-screen') || 'projects');
-  const go = s => { setScreen(s); localStorage.setItem('tp-ios-screen', s); };
+      function App() {
+        const [screen, setScreen] = useState(
+          () => localStorage.getItem('tp-ios-screen') || 'projects'
+        );
+        const go = s => {
+          setScreen(s);
+          localStorage.setItem('tp-ios-screen', s);
+        };
 
-  const renderInDevice = (content, title, keyboard) => (
-    <IOSDevice width={390} height={844} title={title} keyboard={keyboard}>
-      {content}
-    </IOSDevice>
-  );
+        const TABS = [
+          { id: 'projects', label: 'Projects' },
+          { id: 'reports',  label: 'Reports' },
+          { id: 'timer',    label: 'Timer' },
+          { id: 'new',      label: 'New Entry' },
+          { id: 'settings', label: 'Settings' },
+          { id: 'controls', label: 'Controls' },
+        ];
 
-  return (
-    <div className="stage">
-      <h1 className="stage-title">Trail Peak</h1>
-      <p className="stage-sub">Time Tracker Pro · iOS</p>
-      <div className="nav-pills">
-        {['projects','timer','new','controls'].map(s => (
-          <button key={s} className={'nav-pill ' + (screen === s ? 'active' : '')} onClick={() => go(s)}>
-            {s === 'projects' ? 'Projects' : s === 'timer' ? 'Timer' : s === 'new' ? 'New Entry' : 'Controls'}
-          </button>
-        ))}
-      </div>
-      <div className="devices">
-        {screen === 'projects' && (
-          <div className="device-wrap">
-            <IOSDevice width={390} height={844}><ProjectsScreen onOpen={() => go('timer')} /></IOSDevice>
-            <div className="device-lbl">Projects</div>
+        return (
+          <div className="stage">
+            <h1 className="stage-title">Trail Peak Design</h1>
+            <p className="stage-sub">Time Tracker Pro · iOS</p>
+            <div className="nav-pills">
+              {TABS.map(({ id, label }) => (
+                <button
+                  key={id}
+                  className={'nav-pill ' + (screen === id ? 'active' : '')}
+                  onClick={() => go(id)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div className="devices">
+              {screen === 'projects' && (
+                <div className="device-wrap">
+                  <IOSDevice width={390} height={844}>
+                    <ProjectsScreen onOpen={() => go('timer')} />
+                  </IOSDevice>
+                  <div className="device-lbl">Projects</div>
+                </div>
+              )}
+              {screen === 'reports' && (
+                <div className="device-wrap">
+                  <IOSDevice width={390} height={844}>
+                    <ReportsScreen />
+                  </IOSDevice>
+                  <div className="device-lbl">Reports</div>
+                </div>
+              )}
+              {screen === 'timer' && (
+                <div className="device-wrap">
+                  <IOSDevice width={390} height={844}>
+                    <TimerScreen
+                      onBack={() => go('projects')}
+                      onNew={() => go('new')}
+                    />
+                  </IOSDevice>
+                  <div className="device-lbl">Timer · Active</div>
+                </div>
+              )}
+              {screen === 'new' && (
+                <div className="device-wrap">
+                  <IOSDevice width={390} height={844} keyboard>
+                    <NewEntryScreen onBack={() => go('projects')} />
+                  </IOSDevice>
+                  <div className="device-lbl">New Entry</div>
+                </div>
+              )}
+              {screen === 'settings' && (
+                <div className="device-wrap">
+                  <IOSDevice width={390} height={844}>
+                    <SettingsScreen />
+                  </IOSDevice>
+                  <div className="device-lbl">Settings</div>
+                </div>
+              )}
+              {screen === 'controls' && (
+                <div className="device-wrap">
+                  <IOSDevice width={390} height={844}>
+                    <ControlsScreen />
+                  </IOSDevice>
+                  <div className="device-lbl">Native Controls</div>
+                </div>
+              )}
+            </div>
           </div>
-        )}
-        {screen === 'timer' && (
-          <div className="device-wrap">
-            <IOSDevice width={390} height={844}><TimerScreen onBack={() => go('projects')} onNew={() => go('new')} /></IOSDevice>
-            <div className="device-lbl">Timer · Active</div>
-          </div>
-        )}
-        {screen === 'new' && (
-          <div className="device-wrap">
-            <IOSDevice width={390} height={844} keyboard><NewEntryScreen onBack={() => go('projects')} /></IOSDevice>
-            <div className="device-lbl">New Entry</div>
-          </div>
-        )}
-        {screen === 'controls' && (
-          <div className="device-wrap">
-            <IOSDevice width={390} height={844}><ControlsScreen /></IOSDevice>
-            <div className="device-lbl">Native Controls</div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+        );
+      }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-</script>
-</body>
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
 </html>
