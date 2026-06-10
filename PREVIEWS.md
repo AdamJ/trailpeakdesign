@@ -31,3 +31,7 @@ A list of preview components and elements, viewable in the browser.
 - [Headings](/preview/type-headings.html)
 - [Body](/preview/type-body.html)
 - [Code](/preview/type-code.html)
+
+## Frameworks
+
+- [Shadcn theme](/preview/shadcn-theme.html) — buttons, badges, cards, form fields, alerts, and tabs styled with `/shadcn/theme.css` (light + dark)
