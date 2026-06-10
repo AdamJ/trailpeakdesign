@@ -1,0 +1,237 @@
+/* ============================================================
+   Trail Peak — Shadcn/ui Theme
+   Generated from `colors_and_type.css` (Trail Peak Design System).
+   Drop into a Tailwind v4 + shadcn/ui project as `app/globals.css`
+   (or `@import` it from your global stylesheet).
+
+   See `shadcn/README.md` for the token mapping table, accessibility
+   notes, and setup instructions (fonts, radius, etc).
+   ============================================================ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------- Brand fonts ----------
+   Copy /fonts from the design system into your project's
+   /public/fonts (or wherever your bundler serves static files)
+   and adjust the url() paths below to match. */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype-variations"),
+       url("/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations"),
+       url("/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype-variations"),
+       url("/fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Italic-VariableFont_opsz_wght.ttf") format("truetype-variations"),
+       url("/fonts/Inter-Italic-VariableFont_opsz_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url("/fonts/FiraCode-VariableFont_wght.ttf") format("truetype-variations"),
+       url("/fonts/FiraCode-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pirata One";
+  src: url("/fonts/PirataOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Trail Peak corner radius. Base = 16px so --radius-xl resolves to the
+     20px "card" radius from the design system. See README for the
+     button-radius caveat. */
+  --radius: 1rem;
+
+  /* ---------- Surfaces ---------- */
+  --background: oklch(0.9588 0.0127 86.83);          /* earth-sand */
+  --foreground: oklch(0.2528 0.0313 63.53);          /* earth-soil */
+
+  --card: oklch(0.9588 0.0127 86.83);                /* earth-sand (flat cream, see README) */
+  --card-foreground: oklch(0.2528 0.0313 63.53);     /* earth-soil */
+
+  --popover: oklch(0.9588 0.0127 86.83);             /* earth-sand */
+  --popover-foreground: oklch(0.2528 0.0313 63.53);  /* earth-soil */
+
+  /* ---------- Brand / interaction ---------- */
+  --primary: oklch(0.543 0.1437 36.24);              /* trail-ember */
+  --primary-foreground: oklch(0.9588 0.0127 86.83);  /* earth-sand */
+
+  --secondary: oklch(0.8988 0.0298 80.65);           /* earth-dune */
+  --secondary-foreground: oklch(0.2528 0.0313 63.53);/* earth-soil */
+
+  --muted: oklch(0.8988 0.0298 80.65);               /* earth-dune */
+  --muted-foreground: oklch(0.3464 0.0394 53.49);    /* earth-bark */
+
+  --accent: oklch(0.7891 0.0452 81.82);              /* earth-tan */
+  --accent-foreground: oklch(0.2528 0.0313 63.53);   /* earth-soil */
+
+  --destructive: oklch(0.4613 0.1507 29.21);         /* trail-rust (new, see README) */
+  --destructive-foreground: oklch(0.9588 0.0127 86.83); /* earth-sand */
+
+  /* ---------- Structure ---------- */
+  --border: oklch(0.3464 0.0394 53.49);              /* earth-bark — visible "hairline" */
+  --input: oklch(0.3464 0.0394 53.49);               /* earth-bark */
+  --ring: oklch(0.6235 0.1548 37.03);                /* trail-clay — focus ring */
+
+  /* ---------- Charts ---------- */
+  --chart-1: oklch(0.6235 0.1548 37.03);  /* trail-clay */
+  --chart-2: oklch(0.5055 0.0477 133.36); /* trail-moss */
+  --chart-3: oklch(0.543 0.1437 36.24);   /* trail-ember */
+  --chart-4: oklch(0.7027 0.049 158.52);  /* trail-sage */
+  --chart-5: oklch(0.4886 0.025 60.33);   /* earth-stone */
+
+  /* ---------- Sidebar / navigation ---------- */
+  --sidebar: oklch(0.8988 0.0298 80.65);              /* earth-dune */
+  --sidebar-foreground: oklch(0.2528 0.0313 63.53);   /* earth-soil */
+  --sidebar-primary: oklch(0.5055 0.0477 133.36);     /* trail-moss */
+  --sidebar-primary-foreground: oklch(0.9588 0.0127 86.83); /* earth-sand */
+  --sidebar-accent: oklch(0.7891 0.0452 81.82);       /* earth-tan */
+  --sidebar-accent-foreground: oklch(0.2528 0.0313 63.53); /* earth-soil */
+  --sidebar-border: oklch(0.3464 0.0394 53.49);       /* earth-bark */
+  --sidebar-ring: oklch(0.6235 0.1548 37.03);         /* trail-clay */
+
+  /* ---------- Type ---------- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Pirata One", "Playfair Display", serif;
+}
+
+.dark {
+  /* ---------- Surfaces ---------- */
+  --background: oklch(0.2528 0.0313 63.53);          /* earth-soil */
+  --foreground: oklch(0.9588 0.0127 86.83);          /* earth-sand */
+
+  --card: oklch(0.3464 0.0394 53.49);                /* earth-bark */
+  --card-foreground: oklch(0.9588 0.0127 86.83);     /* earth-sand */
+
+  --popover: oklch(0.3464 0.0394 53.49);             /* earth-bark */
+  --popover-foreground: oklch(0.9588 0.0127 86.83);  /* earth-sand */
+
+  /* ---------- Brand / interaction ---------- */
+  --primary: oklch(0.543 0.1437 36.24);              /* trail-ember */
+  --primary-foreground: oklch(0.9588 0.0127 86.83);  /* earth-sand */
+
+  --secondary: oklch(0.3464 0.0394 53.49);           /* earth-bark */
+  --secondary-foreground: oklch(0.9588 0.0127 86.83);/* earth-sand */
+
+  --muted: oklch(0.3464 0.0394 53.49);               /* earth-bark */
+  --muted-foreground: oklch(0.7384 0.0219 67.48);    /* earth-mist (new, see README) */
+
+  --accent: oklch(0.4103 0.0459 55.75);              /* earth-bark-raise (new, see README) */
+  --accent-foreground: oklch(0.9588 0.0127 86.83);   /* earth-sand */
+
+  --destructive: oklch(0.6655 0.1485 30.5);          /* trail-rust, lightened for dark bg */
+  --destructive-foreground: oklch(0.2528 0.0313 63.53); /* earth-soil */
+
+  /* ---------- Structure ---------- */
+  --border: oklch(0.4103 0.0459 55.75);              /* earth-bark-raise */
+  --input: oklch(0.4103 0.0459 55.75);               /* earth-bark-raise */
+  --ring: oklch(0.6235 0.1548 37.03);                /* trail-clay */
+
+  /* ---------- Charts ---------- */
+  --chart-1: oklch(0.6235 0.1548 37.03);  /* trail-clay */
+  --chart-2: oklch(0.7027 0.049 158.52);  /* trail-sage */
+  --chart-3: oklch(0.543 0.1437 36.24);   /* trail-ember */
+  --chart-4: oklch(0.5055 0.0477 133.36); /* trail-moss */
+  --chart-5: oklch(0.7384 0.0219 67.48);  /* earth-mist */
+
+  /* ---------- Sidebar / navigation ---------- */
+  --sidebar: oklch(0.2528 0.0313 63.53);              /* earth-soil */
+  --sidebar-foreground: oklch(0.9588 0.0127 86.83);   /* earth-sand */
+  --sidebar-primary: oklch(0.5055 0.0477 133.36);     /* trail-moss */
+  --sidebar-primary-foreground: oklch(0.9588 0.0127 86.83); /* earth-sand */
+  --sidebar-accent: oklch(0.3464 0.0394 53.49);       /* earth-bark */
+  --sidebar-accent-foreground: oklch(0.9588 0.0127 86.83); /* earth-sand */
+  --sidebar-border: oklch(0.4103 0.0459 55.75);       /* earth-bark-raise */
+  --sidebar-ring: oklch(0.6235 0.1548 37.03);         /* trail-clay */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+  }
+}

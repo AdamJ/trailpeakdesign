@@ -14,6 +14,8 @@ Trail Peak supports a small family of surfaces built and maintained by Adam Joli
 - **Companion iOS apps** — Time Tracker Pro, The Magic Collection, etc. Same color / type foundations, native controls.
   - [iOS](/ui_kits/ios_app/index.html)
 - **Social / share cards** — 1600×1200 posters using display type and product screenshots.
+- **Shadcn/ui apps** — Tailwind v4 web apps built on shadcn/ui components.
+  - [theme](/shadcn/theme.css) · [docs](/shadcn/README.md) · [preview](/preview/shadcn-theme.html)
 
 ## Index
 
@@ -22,6 +24,7 @@ Trail Peak supports a small family of surfaces built and maintained by Adam Joli
 - `assets/` — logo, icons, placeholder imagery
 - `preview/` — per-token preview cards (rendered in the Design System tab)
 - `ui_kits/marketing_site/` — click-thru recreation of the portfolio / marketing site
+- `shadcn/` — shadcn/ui theme (Tailwind v4 / OKLCH) generated from these tokens, with an accessibility-checked token mapping
 - `SKILL.md` — agent entry point
 
 ## Sources
@@ -155,6 +158,9 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 │   └── logo.html
 ├── social/                          ← 1600×1200 share / OG cards
 │   └── index.html                   ← brand, app, and case-study card templates
+├── shadcn/
+│   ├── README.md                    ← token mapping + accessibility notes
+│   └── theme.css                    ← shadcn/ui theme (Tailwind v4 / OKLCH)
 └── ui_kits/
     ├── marketing_site/
     │   ├── README.md

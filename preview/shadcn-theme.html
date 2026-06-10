@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trail Peak — Shadcn Theme Preview</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+/* ---- Theme tokens (mirrors ../shadcn/theme.css :root / .dark) ---- */
+:root{
+  --background: oklch(0.9588 0.0127 86.83);
+  --foreground: oklch(0.2528 0.0313 63.53);
+  --card: oklch(0.9588 0.0127 86.83);
+  --card-foreground: oklch(0.2528 0.0313 63.53);
+  --popover: oklch(0.9588 0.0127 86.83);
+  --popover-foreground: oklch(0.2528 0.0313 63.53);
+  --primary: oklch(0.543 0.1437 36.24);
+  --primary-foreground: oklch(0.9588 0.0127 86.83);
+  --secondary: oklch(0.8988 0.0298 80.65);
+  --secondary-foreground: oklch(0.2528 0.0313 63.53);
+  --muted: oklch(0.8988 0.0298 80.65);
+  --muted-foreground: oklch(0.3464 0.0394 53.49);
+  --accent: oklch(0.7891 0.0452 81.82);
+  --accent-foreground: oklch(0.2528 0.0313 63.53);
+  --destructive: oklch(0.4613 0.1507 29.21);
+  --destructive-foreground: oklch(0.9588 0.0127 86.83);
+  --border: oklch(0.3464 0.0394 53.49);
+  --input: oklch(0.3464 0.0394 53.49);
+  --ring: oklch(0.6235 0.1548 37.03);
+  --radius: 1rem;
+}
+.dark{
+  --background: oklch(0.2528 0.0313 63.53);
+  --foreground: oklch(0.9588 0.0127 86.83);
+  --card: oklch(0.3464 0.0394 53.49);
+  --card-foreground: oklch(0.9588 0.0127 86.83);
+  --popover: oklch(0.3464 0.0394 53.49);
+  --popover-foreground: oklch(0.9588 0.0127 86.83);
+  --primary: oklch(0.543 0.1437 36.24);
+  --primary-foreground: oklch(0.9588 0.0127 86.83);
+  --secondary: oklch(0.3464 0.0394 53.49);
+  --secondary-foreground: oklch(0.9588 0.0127 86.83);
+  --muted: oklch(0.3464 0.0394 53.49);
+  --muted-foreground: oklch(0.7384 0.0219 67.48);
+  --accent: oklch(0.4103 0.0459 55.75);
+  --accent-foreground: oklch(0.9588 0.0127 86.83);
+  --destructive: oklch(0.6655 0.1485 30.5);
+  --destructive-foreground: oklch(0.2528 0.0313 63.53);
+  --border: oklch(0.4103 0.0459 55.75);
+  --input: oklch(0.4103 0.0459 55.75);
+  --ring: oklch(0.6235 0.1548 37.03);
+}
+
+*{box-sizing:border-box}
+body{margin:0;padding:28px;background:var(--background);color:var(--foreground);font-family:var(--font-sans);transition:background .22s var(--ease-trail),color .22s var(--ease-trail)}
+.title{font-family:var(--font-serif);font-size:48px;font-weight:700;line-height:1.1;color:var(--foreground);margin:0 0 4px}
+.subtitle{font-family:var(--font-sans);font-size:14px;line-height:1.5;color:var(--muted-foreground);margin:0 0 24px}
+.subtitle code{font-family:var(--font-mono,monospace);color:inherit;background:var(--muted);border-radius:4px;padding:1px 6px}
+
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.toggle{font-family:var(--font-sans);font-size:13px;font-weight:600;border-radius:999px;padding:8px 16px;border:1px solid var(--border);background:var(--secondary);color:var(--secondary-foreground);cursor:pointer;transition:all .18s var(--ease-trail)}
+.toggle:hover{background:var(--accent);color:var(--accent-foreground)}
+
+.section{margin-bottom:40px}
+.section h2{font-family:var(--font-serif);font-size:20px;font-weight:600;margin:0 0 14px;color:var(--foreground)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.lbl{font-family:var(--font-code);font-size:11px;color:var(--muted-foreground);min-width:90px}
+
+/* Buttons */
+.btn{font-family:var(--font-sans);font-size:14px;font-weight:600;line-height:1;border-radius:var(--radius-sm,12px);padding:10px 20px;cursor:pointer;border:1px solid transparent;transition:all .18s var(--ease-trail);outline-offset:2px}
+.btn:focus-visible{outline:2px solid var(--ring)}
+.btn-primary{background:var(--primary);color:var(--primary-foreground);border-color:var(--border);box-shadow:4px 4px 0 0 var(--border)}
+.btn-primary:hover{box-shadow:2px 2px 0 0 var(--border);transform:translate(2px,2px)}
+.btn-secondary{background:var(--secondary);color:var(--secondary-foreground);border-color:var(--border)}
+.btn-secondary:hover{background:var(--accent);color:var(--accent-foreground)}
+.btn-outline{background:transparent;color:var(--foreground);border-color:var(--border)}
+.btn-outline:hover{background:var(--accent);color:var(--accent-foreground)}
+.btn-destructive{background:var(--destructive);color:var(--destructive-foreground)}
+.btn-destructive:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--foreground);border-color:transparent}
+.btn-ghost:hover{background:var(--accent);color:var(--accent-foreground)}
+
+/* Card */
+.card{background:var(--card);color:var(--card-foreground);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:8px 8px 0 0 var(--shadow-deep);max-width:380px;transition:box-shadow .22s var(--ease-trail)}
+.card:hover{box-shadow:12px 12px 0 0 var(--shadow-deep)}
+.card h3{font-family:var(--font-serif);font-size:20px;font-weight:600;margin:0 0 8px}
+.card p{font-size:14px;line-height:1.5;color:var(--muted-foreground);margin:0 0 16px}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;font-family:var(--font-sans);font-size:12px;font-weight:600;border-radius:999px;padding:4px 12px;border:1px solid transparent}
+.badge-default{background:var(--primary);color:var(--primary-foreground)}
+.badge-secondary{background:var(--secondary);color:var(--secondary-foreground)}
+.badge-outline{background:transparent;color:var(--foreground);border-color:var(--border)}
+.badge-destructive{background:var(--destructive);color:var(--destructive-foreground)}
+
+/* Inputs */
+.field{display:flex;flex-direction:column;gap:6px;max-width:320px;margin-bottom:16px}
+.field label{font-size:13px;font-weight:600}
+.field input,.field textarea{font-family:var(--font-sans);font-size:14px;padding:10px 12px;border-radius:12px;border:1px solid var(--input);background:var(--background);color:var(--foreground)}
+.field input:focus,.field textarea:focus{outline:2px solid var(--ring);outline-offset:1px;border-color:var(--ring)}
+.field .hint{font-size:12px;color:var(--muted-foreground)}
+
+/* Alerts */
+.alert{border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:var(--card);color:var(--card-foreground)}
+.alert strong{display:block;margin-bottom:2px;font-size:14px}
+.alert p{margin:0;font-size:13px;color:var(--muted-foreground)}
+.alert-destructive{border-color:var(--destructive);background:color-mix(in oklch, var(--destructive) 12%, var(--background))}
+.alert-destructive strong,.alert-destructive p{color:var(--destructive)}
+
+/* Tabs */
+.tabs{display:inline-flex;background:var(--muted);border-radius:12px;padding:4px;gap:4px}
+.tab{font-family:var(--font-sans);font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;border:none;background:transparent;color:var(--muted-foreground);cursor:pointer}
+.tab.active{background:var(--card);color:var(--foreground);box-shadow:0 1px 2px var(--shadow-soft)}
+
+/* Switch */
+.switch{position:relative;display:inline-block;width:40px;height:22px}
+.switch input{opacity:0;width:0;height:0}
+.switch .slider{position:absolute;inset:0;background:var(--input);border-radius:999px;transition:.18s var(--ease-trail);cursor:pointer}
+.switch .slider::before{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:var(--background);border-radius:50%;transition:.18s var(--ease-trail)}
+.switch input:checked + .slider{background:var(--primary)}
+.switch input:checked + .slider::before{transform:translateX(18px)}
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <div>
+      <h1 class="title">Shadcn theme preview</h1>
+      <p class="subtitle">Components rendered with <code>../shadcn/theme.css</code> tokens — light and dark.</p>
+    </div>
+    <button class="toggle" id="toggle">Switch to dark</button>
+  </div>
+
+  <div class="section">
+    <h2>Buttons</h2>
+    <div class="row">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-outline">Outline</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-destructive">Destructive</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Badges</h2>
+    <div class="row">
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-secondary">Secondary</span>
+      <span class="badge badge-outline">Outline</span>
+      <span class="badge badge-destructive">Destructive</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Card</h2>
+    <div class="card">
+      <h3>Field notes</h3>
+      <p>Cards keep the brand's flat-cream surface, 1px bark border, and offset "sticker" shadow that grows on hover.</p>
+      <button class="btn btn-primary">Read the case study</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Form fields</h2>
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="Adam Jolicoeur">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="you@example.com">
+      <span class="hint">We'll only use this to reply.</span>
+    </div>
+    <div class="row">
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+      <span class="lbl">Notify me</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Alerts</h2>
+    <div class="alert">
+      <strong>Heads up</strong>
+      <p>Nothing here yet — pitch your first note above.</p>
+    </div>
+    <div class="alert alert-destructive">
+      <strong>That didn't take</strong>
+      <p>Try again in a moment.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tabs</h2>
+    <div class="tabs">
+      <button class="tab active">Overview</button>
+      <button class="tab">Activity</button>
+      <button class="tab">Settings</button>
+    </div>
+  </div>
+
+<script>
+document.getElementById('toggle').addEventListener('click', function(){
+  document.documentElement.classList.toggle('dark');
+  this.textContent = document.documentElement.classList.contains('dark') ? 'Switch to light' : 'Switch to dark';
+});
+</script>
+</body>
+</html>
