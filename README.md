@@ -1,5 +1,9 @@
 # Trail Peak Design System
 
+<!-- version:start -->
+**Build:** 2026.06.11-4
+<!-- version:end -->
+
 An outdoor-themed design system for portfolio, marketing and app surfaces by Adam Jolicoeur. Clean, editorial layouts with a warm earthen palette, subtle animations, and a quiet reverence for type.
 
 > **Tagline vibe:** "Follow the trail. Pitch the tent. Ship the work."

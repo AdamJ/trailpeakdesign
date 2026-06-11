@@ -1,0 +1,34 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
+  },
+  "urls": [
+    "http://localhost:8080/preview/badges.html",
+    "http://localhost:8080/preview/buttons.html",
+    "http://localhost:8080/preview/card.html",
+    "http://localhost:8080/preview/colors-neutral.html",
+    "http://localhost:8080/preview/colors-primary.html",
+    "http://localhost:8080/preview/colors-semantic.html",
+    "http://localhost:8080/preview/footer.html",
+    "http://localhost:8080/preview/form-fields.html",
+    "http://localhost:8080/preview/icons.html",
+    "http://localhost:8080/preview/logo.html",
+    "http://localhost:8080/preview/navigation.html",
+    "http://localhost:8080/preview/preview.html",
+    "http://localhost:8080/preview/radii.html",
+    "http://localhost:8080/preview/shadcn-theme.html",
+    "http://localhost:8080/preview/shadows.html",
+    "http://localhost:8080/preview/spacing-scale.html",
+    "http://localhost:8080/preview/type-body.html",
+    "http://localhost:8080/preview/type-code.html",
+    "http://localhost:8080/preview/type-display.html",
+    "http://localhost:8080/preview/type-headings.html",
+    "http://localhost:8080/social/index.html",
+    "http://localhost:8080/ui_kits/marketing_site/index.html",
+    "http://localhost:8080/ui_kits/ios_app/index.html"
+  ]
+}
