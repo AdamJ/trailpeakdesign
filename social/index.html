@@ -7,7 +7,7 @@
     <style>
       html, body {
         margin: 0; padding: 0;
-        background: #f5f1e8;
+        background: var(--earth-sand);
         min-height: 100vh;
         font-family: var(--font-sans);
         color: var(--fg-primary);
@@ -56,7 +56,7 @@
         height: 600px;
         overflow: hidden;
         border: 1px solid var(--earth-bark);
-        box-shadow: 8px 8px 0 0 rgba(45, 31, 18, 0.25);
+        box-shadow: 8px 8px 0 0 var(--shadow-deep);
         border-radius: 4px;
       }
       .card {
@@ -131,7 +131,7 @@
         padding: 12px 28px;
         border: 2px solid var(--earth-bark);
         border-radius: 999px;
-        background: rgba(74, 52, 38, 0.45);
+        background: var(--shadow-bark-soft);
         font-family: var(--font-code);
         font-size: 22px;
         color: var(--earth-tan);
@@ -140,7 +140,7 @@
       .brand-wordmark {
         font-family: var(--font-display);
         font-size: 32px;
-        color: var(--earth-bark);
+        color: var(--fg-muted-inverse);
         letter-spacing: 3px;
         position: relative;
         z-index: 1;
@@ -241,7 +241,7 @@
         background: var(--earth-sand);
         border: 2px solid var(--earth-bark);
         border-radius: 18px;
-        box-shadow: 5px 5px 0 0 rgba(45, 31, 18, 0.75);
+        box-shadow: 5px 5px 0 0 var(--shadow-deepest);
         padding: 18px 22px;
         display: flex;
         align-items: center;
@@ -371,7 +371,7 @@
         background: var(--earth-sand);
         border: 2px solid var(--earth-bark);
         border-radius: 16px;
-        box-shadow: 4px 4px 0 0 rgba(45, 31, 18, 0.7);
+        box-shadow: 4px 4px 0 0 var(--shadow-deepest);
         text-align: center;
       }
       .case-stat-n {
@@ -404,7 +404,7 @@
           <div class="card brand-card">
             <div class="brand-backdrop" aria-hidden="true">J</div>
 
-            <p class="card-eyebrow" style="position: relative; z-index: 1; color: var(--earth-stone);">adamjolicoeur.me</p>
+            <p class="card-eyebrow" style="position: relative; z-index: 1; color: var(--fg-muted-inverse);">adamjolicoeur.me</p>
 
             <div style="position: relative; z-index: 1;">
               <p class="brand-name">Adam<br>Jolicoeur</p>
@@ -414,7 +414,7 @@
                 <span class="brand-chip">Product Manager</span>
                 <span class="brand-chip">AWS · Red Hat · PatternFly</span>
               </div>
-              <p class="card-tagline" style="color: var(--earth-stone);">Follow the trail. Pitch the tent. Ship the work.</p>
+              <p class="card-tagline" style="color: var(--fg-muted-inverse);">Follow the trail. Pitch the tent. Ship the work.</p>
             </div>
 
             <p class="brand-wordmark">Trail Peak</p>

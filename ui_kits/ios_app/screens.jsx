@@ -7,9 +7,10 @@ const TP = {
   tan: '#D4C4A8',
   bark: '#4A3426',
   soil: '#2D1F12',
-  stone: '#8A7560',
+  stone: '#6B5D52', /* design-allow: matches --earth-stone */
   clay: '#D35F3D',
-  ember: '#C4472A',
+  ember: '#B34A2D', /* design-allow: matches --trail-ember */
+  emberDark: '#9C3920', /* design-allow: darker ember for AA text on dune */
   moss: '#5A6B4F',
   sage: '#8FA085',
   shadowDeep: 'rgba(45, 31, 18, 0.85)',
@@ -54,9 +55,9 @@ function TPNav({ title, leading, trailing, subtitle }) {
   );
 }
 
-function NavPillBtn({ icon, onClick, primary }) {
+function NavPillBtn({ icon, onClick, primary, label }) {
   return (
-    <button onClick={onClick} style={{
+    <button onClick={onClick} aria-label={label} style={{
       width: 40, height: 40, borderRadius: '50%',
       border: `4px solid ${TP.bark}`,
       background: primary ? TP.ember : TP.sand,
@@ -127,7 +128,7 @@ function ProjectsScreen({ onOpen }) {
         title="Projects"
         subtitle="Week 16 · Apr 13–19"
         leading={null}
-        trailing={<NavPillBtn icon="ph-plus" primary />}
+        trailing={<NavPillBtn icon="ph-plus" primary label="New project" />}
       />
 
       {/* Week total card */}
@@ -173,7 +174,7 @@ function ProjectsScreen({ onOpen }) {
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontFamily: "'Fira Code', monospace", fontSize: 15, fontWeight: 600, color: TP.soil }}>{p.hours.toFixed(1)}h</div>
               {p.active && (
-                <div style={{ fontSize: 10, color: TP.ember, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 2 }}>
+                <div style={{ fontSize: 10, color: TP.emberDark, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.08em', marginTop: 2 }}>
                   <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: TP.ember, marginRight: 4, verticalAlign: 'middle' }}></span>
                   Active
                 </div>
@@ -201,8 +202,8 @@ function TimerScreen({ onBack, onNew }) {
       <TPNav
         title="Timer"
         subtitle="Time Tracker Pro · Personal"
-        leading={<NavPillBtn icon="ph-arrow-left" onClick={onBack} />}
-        trailing={<NavPillBtn icon="ph-dots-three" />}
+        leading={<NavPillBtn icon="ph-arrow-left" onClick={onBack} label="Back" />}
+        trailing={<NavPillBtn icon="ph-dots-three" label="More options" />}
       />
 
       {/* Big display */}
@@ -287,7 +288,7 @@ function NewEntryScreen({ onBack }) {
     <div style={{ background: TP.sand, minHeight: '100%' }}>
       <TPNav
         title="New Entry"
-        leading={<NavPillBtn icon="ph-x" onClick={onBack} />}
+        leading={<NavPillBtn icon="ph-x" onClick={onBack} label="Close" />}
         trailing={
           <button style={{
             padding: '8px 16px', borderRadius: 999,
@@ -387,7 +388,7 @@ function ReportsScreen() {
       <TPNav
         title="Reports"
         subtitle="Week 16 · Apr 13–19"
-        trailing={<NavPillBtn icon="ph-share-network" />}
+        trailing={<NavPillBtn icon="ph-share-network" label="Share" />}
       />
 
       <div style={{ padding: '0 20px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 18 }}>

@@ -69,6 +69,8 @@
   --trail-clay:     rgb(211, 95, 61);  /* burnt orange / trail marker */
   --trail-ember:    rgb(179, 74, 45);  /* deeper clay — primary button */
 
+  --earth-stone-light: rgb(150, 138, 128); /* lightened stone — muted text on dark surfaces */
+
   --ink-pure:       rgb(0, 0, 0);
   --paper-pure:     rgb(255, 255, 255);
 
@@ -76,12 +78,18 @@
   --shadow-soft:    rgba(45, 31, 18, 0.08);
   --shadow-card:    rgba(45, 31, 18, 0.15);
   --shadow-deep:    rgba(45, 31, 18, 0.25);
+  --shadow-deepest: rgba(45, 31, 18, 0.75);
+  --shadow-bark-soft: rgba(74, 52, 38, 0.45);
+
+  /* ---------- Overlay tokens ---------- */
+  --overlay-paper:  rgba(255, 255, 255, 0.45); /* translucent paper glass effect */
 
   /* ---------- Semantic colors ---------- */
   --fg-primary:           var(--earth-soil);  /* primary text */
   --fg-secondary:           var(--earth-bark);  /* secondary text */
   --fg-muted:           var(--earth-stone); /* muted text */
   --fg-inverse:     var(--earth-sand);
+  --fg-muted-inverse: var(--earth-stone-light); /* muted text on dark surfaces */
 
   --bg-page:           var(--earth-sand);  /* page */
   --bg-secondary:           var(--earth-dune);  /* raised surface */
