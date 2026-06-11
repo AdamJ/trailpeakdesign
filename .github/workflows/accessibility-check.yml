@@ -1,0 +1,33 @@
+name: Accessibility check
+
+on:
+  pull_request:
+    paths:
+      - 'preview/**'
+      - 'ui_kits/**'
+      - 'social/**'
+      - 'colors_and_type.css'
+      - 'shadcn/**'
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+    # TODO: this is the first time pa11y has run against the repo and may
+    # surface pre-existing issues. Remove continue-on-error once those are
+    # triaged/fixed and this check should start blocking merges.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Serve site
+        run: npx --yes http-server -p 8080 . &
+
+      - name: Wait for server
+        run: npx --yes wait-on http://localhost:8080
+
+      - name: Run pa11y-ci
+        run: npx --yes pa11y-ci

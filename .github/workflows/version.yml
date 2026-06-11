@@ -1,0 +1,76 @@
+name: Update build version
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  version:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute build version
+        id: build
+        run: |
+          COUNT=$(git rev-list --count HEAD)
+          DATE=$(date -u +%Y.%m.%d)
+          VERSION="${DATE}-${COUNT}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Update VERSION, CHANGELOG.md and README
+        run: |
+          VERSION="${{ steps.build.outputs.version }}"
+          PREV_VERSION=$(cat VERSION 2>/dev/null || echo "")
+
+          if [ "$VERSION" = "$PREV_VERSION" ]; then
+            echo "Version unchanged ($VERSION), nothing to do."
+            exit 0
+          fi
+
+          echo "$VERSION" > VERSION
+
+          # Find the commit recorded for the previous version, default to full history if none.
+          PREV_SHA=$(git log --grep="bump build version to ${PREV_VERSION} " --format=%H -1 || true)
+          if [ -n "$PREV_SHA" ]; then
+            RANGE="${PREV_SHA}..HEAD"
+          else
+            RANGE="HEAD"
+          fi
+
+          # Split CHANGELOG.md into the intro (before the first "## " entry) and the entries.
+          awk '/^## /{exit} {print}' CHANGELOG.md > /tmp/changelog_intro.md
+          awk 'f{print} /^## /{f=1}' CHANGELOG.md > /tmp/changelog_entries.md
+
+          {
+            cat /tmp/changelog_intro.md
+            echo "## ${VERSION}"
+            echo
+            git log "$RANGE" --format='- %s' --no-merges
+            echo
+            cat /tmp/changelog_entries.md
+          } > CHANGELOG.md
+          rm -f /tmp/changelog_intro.md /tmp/changelog_entries.md
+
+          # Update the build badge in README between the markers.
+          sed -i "s/\*\*Build:\*\* .*/\*\*Build:\*\* ${VERSION}/" README.md
+
+      - name: Commit changes
+        run: |
+          VERSION="${{ steps.build.outputs.version }}"
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add VERSION CHANGELOG.md README.md
+          git commit -m "chore: bump build version to ${VERSION} [skip ci]"
+          git push
