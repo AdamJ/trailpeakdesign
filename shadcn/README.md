@@ -20,11 +20,14 @@ OKLCH) generated from the Trail Peak Design System tokens in
 ## Token mapping
 
 Every shadcn variable below traces back to a Trail Peak token in
-`colors_and_type.css`. "New" rows are colors invented for this theme because
-shadcn requires roles the design system doesn't define yet (destructive
-state, a lighter dark-mode neutral, an extra dark-mode surface step) — they
-were chosen to stay inside the earth/trail palette and pass contrast
-checks (see below).
+`colors_and_type.css`. The colors in the "New colors" section were
+originally invented for this theme to cover roles shadcn requires that the
+design system didn't define yet (destructive state, a lighter dark-mode
+neutral, an extra dark-mode surface step) — they've since been promoted
+into `colors_and_type.css` as first-class palette tokens (`--trail-rust`,
+`--trail-rust-light`, `--earth-mist`, `--earth-bark-raise`) plus a
+`--danger` / `--danger-foreground` semantic pair, and the design system now
+ships its own `.dark` mode built on the same values.
 
 | Shadcn variable | Light value | Dark value | Trail Peak source |
 | --- | --- | --- | --- |
@@ -34,24 +37,27 @@ checks (see below).
 | `--primary` | trail-ember | trail-ember | `--accent-strong` (primary button fill) |
 | `--primary-foreground` | earth-sand | earth-sand | cream text on the primary button |
 | `--secondary`, `--muted` | earth-dune | earth-bark | `--bg-secondary` |
-| `--muted-foreground` | earth-bark | earth-mist *(new)* | needs ≥4.5:1 on muted bg |
-| `--accent` | earth-tan | earth-bark-raise *(new)* | `--bg-3`; subtle hover/selected surface |
+| `--muted-foreground` | earth-bark | earth-mist | needs ≥4.5:1 on muted bg |
+| `--accent` | earth-tan | earth-bark-raise | `--bg-3`; subtle hover/selected surface |
 | `--accent-foreground` | earth-soil | earth-sand | |
-| `--destructive` | trail-rust *(new)* | trail-rust, lightened | brick red in the same warm family as trail-clay/ember |
-| `--destructive-foreground` | earth-sand | earth-soil | |
-| `--border`, `--input` | earth-bark | earth-bark-raise *(new)* | brand's signature 1px hairline |
+| `--destructive` | `--danger` (trail-rust) | `--danger` (trail-rust-light) | brick red in the same warm family as trail-clay/ember |
+| `--destructive-foreground` | `--danger-foreground` (earth-sand) | `--danger-foreground` (earth-soil) | |
+| `--border`, `--input` | earth-bark | earth-bark-raise | brand's signature 1px hairline |
 | `--ring` | trail-clay | trail-clay | `--accent` (interaction color) |
 | `--chart-1..5` | clay / moss / ember / sage / stone | clay / sage / ember / moss / mist | full trail palette |
 | `--sidebar-primary` | trail-moss | trail-moss | `--accent-alt`, reserved for nav per brand |
 
-### New colors
+### Colors added by this theme
+
+These four colors were introduced for this theme and are now part of the
+core palette in `colors_and_type.css`, including its own `.dark` mode.
 
 | Name | Hex (approx) | Used for | Why |
 | --- | --- | --- | --- |
-| `trail-rust` | `#9B2A20` | `--destructive` (light) | The system has no error/danger color. This sits in the same warm-red family as trail-clay/trail-ember but is desaturated and dark enough to hit AA on cream (6.78:1) and with white/cream text on it (7.65:1 / 6.78:1). |
-| `trail-rust` (dark) | `#E06C5A` | `--destructive` (dark) | Lightened so it reads on `earth-soil`; pairs with `earth-soil` text at 4.91:1. |
-| `earth-mist` | `#B4A89C` | `--muted-foreground` (dark) | `earth-stone` only hits 2.5:1 on dark surfaces. This lighter warm neutral hits 6.85:1 on `earth-soil` and 4.98:1 on `earth-bark`. |
-| `earth-bark-raise` | `#5E4432` | `--accent`, `--border`, `--input`, `--card` borders (dark) | A half-step lighter than `earth-bark`, used to give dark-mode surfaces a visible elevation step without introducing a new hue. |
+| `trail-rust` | `#9B2A20` | `--destructive` / `--danger` (light) | The system had no error/danger color. This sits in the same warm-red family as trail-clay/trail-ember but is desaturated and dark enough to hit AA on cream (6.78:1) and with white/cream text on it (7.65:1 / 6.78:1). |
+| `trail-rust-light` | `#E06C5A` | `--destructive` / `--danger` (dark) | Lightened so it reads on `earth-soil`; pairs with `earth-soil` text at 4.91:1. |
+| `earth-mist` | `#B4A89C` | `--muted-foreground` / `--fg-muted` (dark) | `earth-stone` only hits 2.5:1 on dark surfaces. This lighter warm neutral hits 6.85:1 on `earth-soil` and 4.98:1 on `earth-bark`. |
+| `earth-bark-raise` | `#5E4432` | `--accent`, `--border`, `--input`, `--card` borders, `--bg-3` (dark) | A half-step lighter than `earth-bark`, used to give dark-mode surfaces a visible elevation step without introducing a new hue. |
 
 ## Accessibility notes
 

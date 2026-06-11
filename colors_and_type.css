@@ -63,11 +63,15 @@
   --earth-sand:     rgb(245, 241, 232);/* page background / cream */
   --earth-dune:     rgb(232, 220, 200);/* secondary background */
   --earth-tan:      rgb(201, 184, 154);/* tertiary / code bg */
+  --earth-mist:     rgb(180, 168, 156);/* warm light neutral — muted text on dark surfaces */
+  --earth-bark-raise: rgb(94, 68, 50); /* half-step lighter than earth-bark — dark elevation step */
 
   --trail-moss:     rgb(90, 107, 79);  /* muted forest green */
   --trail-sage:     rgb(134, 169, 148);/* lighter sage accent */
   --trail-clay:     rgb(211, 95, 61);  /* burnt orange / trail marker */
   --trail-ember:    rgb(179, 74, 45);  /* deeper clay — primary button */
+  --trail-rust:     rgb(155, 42, 32);  /* brick red — error/danger (light) */
+  --trail-rust-light: rgb(224, 108, 90); /* lightened rust — error/danger (dark) */
 
   --earth-stone-light: rgb(150, 138, 128); /* lightened stone — muted text on dark surfaces */
 
@@ -102,6 +106,9 @@
 
   --border:         var(--earth-bark);
   --border-subtle:  rgba(74, 52, 38, 0.15);
+
+  --danger:            var(--trail-rust);  /* error/destructive state */
+  --danger-foreground: var(--earth-sand);
 
   /* ---------- Typography families ---------- */
   --font-sans:      'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -154,6 +161,28 @@
   --text-primary:   var(--fg-primary);
   --text-secondary: var(--fg-secondary);
   --text-muted:     var(--fg-muted);
+}
+
+/* ---------- Dark mode ----------
+   Add `class="dark"` to <html> (or any ancestor) to flip the semantic
+   tokens below. Palette tokens (--earth-*, --trail-*) are unchanged —
+   only the semantic roles that consume them are remapped. Mirrors the
+   shadcn/ui dark theme in shadcn/theme.css. */
+.dark {
+  --fg-primary:     var(--earth-sand);   /* primary text */
+  --fg-secondary:   var(--earth-tan);    /* secondary text */
+  --fg-muted:       var(--earth-mist);   /* muted text */
+  --fg-inverse:     var(--earth-soil);
+
+  --bg-page:        var(--earth-soil);   /* page */
+  --bg-secondary:   var(--earth-bark);   /* raised surface */
+  --bg-3:           var(--earth-bark-raise); /* code / chip */
+
+  --border:         var(--earth-bark-raise);
+  --border-subtle:  rgba(245, 241, 232, 0.15);
+
+  --danger:            var(--trail-rust-light);
+  --danger-foreground: var(--earth-soil);
 }
 
 /* ---------- Semantic text styles ---------- */
