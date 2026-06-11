@@ -13,5 +13,4 @@ added automatically by the `version` workflow on every push to `main`.
 - Add design system foundations and previews
 - Initial commit
 
-
 - Initial changelog baseline.

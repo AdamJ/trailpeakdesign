@@ -12,10 +12,6 @@ on:
 jobs:
   pa11y:
     runs-on: ubuntu-latest
-    # TODO: this is the first time pa11y has run against the repo and may
-    # surface pre-existing issues. Remove continue-on-error once those are
-    # triaged/fixed and this check should start blocking merges.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
