@@ -17,6 +17,10 @@ body{margin:0;padding:28px;background:var(--bg-page);font-family:var(--font-sans
 .btn-outline{background:transparent;border:1px solid var(--earth-bark);color:var(--earth-soil);backdrop-filter:blur(24px)}
 .btn-outline:hover{background:var(--overlay-paper)}
 
+/* Danger / destructive: 4px border, shadow collapses on hover */
+.btn-danger{background:var(--danger);border:4px solid var(--earth-bark);color:var(--danger-foreground);box-shadow:4px 4px 0 0 var(--earth-bark)}
+.btn-danger:hover,.btn-danger.is-hover{box-shadow:2px 2px 0 0 var(--earth-bark);transform:translate(2px,2px)}
+
 /* Icon: 4px border, always */
 .btn-icon{width:56px;height:56px;padding:0;border-radius:50%;border:4px solid var(--earth-bark);background:transparent;display:inline-flex;align-items:center;justify-content:center;color:var(--earth-soil);cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1)}
 .btn-icon:hover,.btn-icon.is-hover{background:var(--earth-bark);color:var(--earth-sand)}
@@ -30,6 +34,7 @@ body{margin:0;padding:28px;background:var(--bg-page);font-family:var(--font-sans
 <div class="row"><span class="lbl">primary</span><button class="btn btn-primary">Button</button><button class="btn btn-primary is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
 <div class="row"><span class="lbl">secondary</span><button class="btn btn-secondary">Button</button><button class="btn btn-secondary is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
 <div class="row"><span class="lbl">outline</span><button class="btn btn-outline">Button</button></div>
+<div class="row"><span class="lbl">danger</span><button class="btn btn-danger">Delete</button><button class="btn btn-danger is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
 <div class="row"><span class="lbl">icon</span>
   <button class="btn-icon" aria-label="Scroll to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg></button>
   <button class="btn-icon is-hover" aria-label="Scroll to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg></button>

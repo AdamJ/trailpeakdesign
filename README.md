@@ -64,6 +64,17 @@ The Figma pseudocode was the source of truth for colors, type, spacing, and comp
 **Palette — earth and trail.**
 Every screen sits on a cream (`#F5F1E8 / earth-sand`) with deeper browns for text and borders and a single burnt-orange accent (`#D35F3D / trail-clay`) for interaction. Green (`#5A6B4F / trail-moss`) is a secondary accent reserved for subdued navigation elements, code outlines, and secondary-button shadows. Black is avoided — the darkest ink is `#2D1F12 / earth-soil`, a near-black brown that feels warmer on cream.
 
+**Error / destructive — `trail-rust`.**
+`#9B2A20 / trail-rust` (lightened to `#E06C5A` in dark mode) is the system's error/destructive color — brick red, in the same warm-red family as trail-clay/trail-ember but desaturated and dark enough to pass WCAG AA on cream (6.78:1) and with cream/soil text on it. Bound to `--danger` / `--danger-foreground`. Use for destructive buttons, form-field errors, and inline error text.
+
+**Dark mode.**
+Add `class="dark"` to `<html>` (or any ancestor) to flip the semantic tokens (`--fg-*`, `--bg-*`, `--border*`, `--danger*`) to their dark-mode values, defined in the `.dark` block of `colors_and_type.css`. Two neutrals exist solely for dark surfaces:
+
+- `earth-mist` (`#B4A89C`) — `--fg-muted` in dark mode (6.85:1 on earth-soil, 4.98:1 on earth-bark).
+- `earth-bark-raise` (`#5E4432`) — `--bg-3` and `--border` in dark mode; a half-step lighter than `earth-bark` for visible elevation without a new hue.
+
+Brand accents (`trail-clay`, `trail-ember`, `trail-moss`) stay constant across themes. This mirrors the dark theme already shipped in `shadcn/theme.css`.
+
 **Backgrounds.**
 
 - Primary: flat cream (`--bg-page`), never pure white.

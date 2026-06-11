@@ -3,10 +3,13 @@
 label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--fg-secondary)}
 input,textarea,select{font-family:var(--font-sans);font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid var(--earth-bark);background:var(--paper-pure);color:var(--fg-primary);outline:none;box-shadow:2px 2px 0 0 var(--shadow-card)}
 input:focus,textarea:focus,select:focus{border-color:var(--trail-clay);box-shadow:2px 2px 0 0 var(--trail-clay)}
+input.error,textarea.error,select.error{border-color:var(--danger);box-shadow:2px 2px 0 0 var(--danger)}
+.error-msg{font-size:12px;font-weight:400;color:var(--danger)}
 .chk{display:flex;gap:8px;align-items:center;font-weight:400;flex-direction:row;font-size:14px;color:var(--fg-primary)}
 </style></head><body>
 <label>Name<input type="text" placeholder="Adam J." /></label>
 <label>Message<textarea rows="3" placeholder="Tell me about the project..."></textarea></label>
+<label>Email<input class="error" type="email" value="not-an-email" /><span class="error-msg">Enter a valid email address.</span></label>
 <label>Project type
 <select><option>Design system</option><option>iOS app</option><option>Marketing site</option></select></label>
 <label class="chk"><input type="checkbox" checked /> Send me occasional updates</label>

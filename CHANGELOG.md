@@ -9,7 +9,6 @@ added automatically by the `version` workflow on every push to `main`.
 
 - Fix pa11y contrast failures and migrate hardcoded colors to design tokens
 
-
 - ci: add automated checks for versioning, design tokens, and quality
 - feat: Add shadcn/ui theme generated from Trail Peak design tokens (#3)
 - Add preview and social share card pages
