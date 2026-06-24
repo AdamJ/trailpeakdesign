@@ -2,7 +2,10 @@
 
 This file tracks build history for Trail Peak Design. Versions here are **not semantic** — they're a build identifier in the form `YYYY.MM.DD-N`, where `N` is the total commit count on `main` at the time of the build. A new entry is added automatically by the `version` workflow on every push to `main`.
 
-## Unreleased
+## 2026.06.24-11
+
+- feat: update inconsistencies and create CLAUDE.md file
+
 
 - fix: `--radius-pill` corrected from `100%` to `9999px` — `100%` produces an ellipse on non-square elements (`colors_and_type.css`)
 - fix: Remove duplicate Google Fonts `@import` — local `@font-face` blocks already serve all four fonts (`colors_and_type.css`)
