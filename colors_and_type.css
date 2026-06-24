@@ -52,9 +52,6 @@
   font-display: swap;
 }
 
-/* Google Fonts — body (Inter), mono (Fira Code), display (Pirata One substitute, flagged). */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Pirata+One&display=swap');
-
 :root {
   /* ---------- Brand palette (earth / trail) ---------- */
   --earth-bark:     rgb(74, 52, 38);   /* deepest brown — body text, borders */
@@ -149,7 +146,7 @@
   --radius-md:   12px;
   --radius-lg:   16px;
   --radius-xl:   20px;
-  --radius-pill: 100%;
+  --radius-pill: 9999px;
 
   /* ---------- Motion ---------- */
   --ease-trail:   cubic-bezier(.22, .61, .36, 1);

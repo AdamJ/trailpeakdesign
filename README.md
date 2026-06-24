@@ -1,12 +1,14 @@
 # Trail Peak Design System
 
 <!-- version:start -->
+
 **Build:** 2026.06.11-9
+
 <!-- version:end -->
 
 An outdoor-themed design system for portfolio, marketing and app surfaces by Adam Jolicoeur. Clean, editorial layouts with a warm earthen palette, subtle animations, and a quiet reverence for type.
 
-> **Tagline vibe:** "Follow the trail. Pitch the tent. Ship the work."
+> **Tagline vibe:** "Follow the trail. Setup camp. Ship the work."
 
 ## Who / what it covers
 
@@ -85,7 +87,7 @@ Brand accents (`trail-clay`, `trail-ember`, `trail-moss`) stay constant across t
 
 **Typography.**
 
-- **Display** — `Pirata One` at 80–96px for oversized poster moments (social cards, landing hero headlines). Letter-spacing +2px.is the desired display face or swap.\*
+- **Display** — `Pirata One` at 80–96px for oversized poster moments (social cards, landing hero headlines). Letter-spacing +2px.
 - **Serif** — `Playfair Display` (SemiBold, Bold) for H1–H3. Warm, editorial.
 - **Sans** — `Inter` 400/600/700 for body, H4–H6, UI.
 - **Code** — `Fira Code` 400 for inline and block code.
@@ -96,10 +98,11 @@ Brand accents (`trail-clay`, `trail-ember`, `trail-moss`) stay constant across t
 
 **Corner radii.**
 
-- Buttons `12px` (`--radius-lg`)
+- Buttons `12px` (`--radius-md`)
 - Cards & surfaces `20px` (`--radius-xl`)
-- Small chips/code `8px` (`--radius-md`)
-- Badges `pill / 999px`
+- Small chips/code `8px` (`--radius-sm`)
+- Badges `pill / 9999px` (`--radius-pill`)
+- Fine detail elements `4px` (`--radius-xs`)
 
 **Shadow system — offset "sticker" drops, not blur.**
 The signature visual move: flat, offset box-shadows that look like stacked paper. Two variants:
@@ -143,9 +146,10 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 
 ## Repository index
 
-```mermaid
+```text
 /
 ├── README.md                        ← you are here
+├── CLAUDE.md                        ← agent context (conventions, tokens, CI)
 ├── PREVIEWS.md                      ← preview index
 ├── SKILL.md                         ← Agent Skills entry (user-invocable)
 ├── colors_and_type.css              ← tokens + semantic type classes
@@ -176,6 +180,9 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 ├── shadcn/
 │   ├── README.md                    ← token mapping + accessibility notes
 │   └── theme.css                    ← shadcn/ui theme (Tailwind v4 / OKLCH)
+├── scraps/                          ← reference imagery (not shipped)
+│   └── ios-controls.jpg             ← iOS native control reference
+├── uploads/                         ← original drop folder for uploaded assets (source files; not consumed by the design system directly)
 └── ui_kits/
     ├── marketing_site/
     │   ├── README.md
