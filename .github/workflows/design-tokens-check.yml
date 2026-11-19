@@ -27,3 +27,12 @@ jobs:
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}
         run: node scripts/check-design-tokens.mjs
+
+      - name: Check token contrast (light and dark)
+        run: node scripts/check-token-contrast.mjs
+
+      - name: Lint components.css and check generated files are current
+        run: |
+          node scripts/build-tokens-json.mjs
+          node scripts/build-components-json.mjs
+          git diff --exit-code tokens.json components.json CLAUDE.md

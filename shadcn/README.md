@@ -55,8 +55,8 @@ core palette in `colors_and_type.css`, including its own `.dark` mode.
 | Name | Hex (approx) | Used for | Why |
 | --- | --- | --- | --- |
 | `trail-rust` | `#9B2A20` | `--destructive` / `--danger` (light) | The system had no error/danger color. This sits in the same warm-red family as trail-clay/trail-ember but is desaturated and dark enough to hit AA on cream (6.78:1) and with white/cream text on it (7.65:1 / 6.78:1). |
-| `trail-rust-light` | `#E06C5A` | `--destructive` / `--danger` (dark) | Lightened so it reads on `earth-soil`; pairs with `earth-soil` text at 4.91:1. |
-| `earth-mist` | `#B4A89C` | `--muted-foreground` / `--fg-muted` (dark) | `earth-stone` only hits 2.5:1 on dark surfaces. This lighter warm neutral hits 6.85:1 on `earth-soil` and 4.98:1 on `earth-bark`. |
+| `trail-rust-light` | `#F08876` | `--destructive` / `--danger` (dark) | Lightened so it reads on `earth-soil`; pairs with `earth-soil` text at 6.45:1. |
+| `earth-mist` | `#C8BDB2` | `--muted-foreground` / `--fg-muted` (dark) | `earth-stone` only hits 2.5:1 on dark surfaces. This lighter warm neutral hits 8.64:1 on `earth-soil` and 6.28:1 on `earth-bark`. |
 | `earth-bark-raise` | `#5E4432` | `--accent`, `--border`, `--input`, `--card` borders, `--bg-3` (dark) | A half-step lighter than `earth-bark`, used to give dark-mode surfaces a visible elevation step without introducing a new hue. |
 
 ## Accessibility notes
@@ -69,7 +69,7 @@ large text / UI components):
   all ≥ 6.8:1 in both themes.
 - **Primary button** (`primary-foreground` on `primary`, earth-sand on
   trail-ember) — 4.74:1, passes AA for normal text in both themes.
-- **Destructive button** — 6.78:1 (light) / 4.91:1 (dark), passes AA.
+- **Destructive button** — 6.78:1 (light) / 6.45:1 (dark), passes AA.
 - **Focus ring** (`ring`, trail-clay) — 3.40:1 against both `background`
   values, meeting the 3:1 requirement for non-text UI/focus indicators
   (WCAG 2.4.11 / 1.4.11). Don't use trail-clay as a *text* color on cream

@@ -7,6 +7,7 @@ A list of preview components and elements, viewable in the browser.
 - [Badges](/preview/badges.html)
 - [Buttons](/preview/buttons.html)
 - [Card](/preview/card.html)
+- [Components (components.css)](/preview/components.html)
 - [Footer](/preview/footer.html)
 - [Form Fields](/preview/form-fields.html)
 - [Icons](/preview/icons.html)

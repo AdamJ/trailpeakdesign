@@ -82,7 +82,7 @@ function SegmentedControl({ options, value }) {
         <div key={o} style={{
           flex: 1, textAlign: 'center', padding: '8px 0',
           fontSize: 14, fontWeight: 600,
-          color: o === value ? '#fff' : TP.soil,
+          color: o === value ? 'var(--earth-sand)' : TP.soil,
           background: o === value ? TP.ember : 'transparent',
           borderRadius: 8, cursor: 'pointer',
           border: o === value ? `2px solid ${TP.bark}` : '2px solid transparent',
@@ -221,7 +221,7 @@ function DateWheel() {
       <div style={{
         position: 'absolute', left: 8, right: 8, top: '50%', transform: 'translateY(-50%)',
         height: 34, border: `2px solid ${TP.ember}`, borderRadius: 8, pointerEvents: 'none',
-        background: 'rgba(211, 95, 61, 0.08)',
+        background: 'color-mix(in srgb, var(--trail-clay) 8%, transparent)',
       }}/>
     </div>
   );

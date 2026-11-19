@@ -2,18 +2,18 @@
 
 // ---------- Shared styles (Trail Peak tokens inline for iOS context) ----------
 const TP = {
-  sand: '#F5F1E8',
-  dune: '#E8DCC8',
-  tan: '#D4C4A8',
-  bark: '#4A3426',
-  soil: '#2D1F12',
-  stone: '#6B5D52', /* design-allow: matches --earth-stone */
-  clay: '#D35F3D',
-  ember: '#B34A2D', /* design-allow: matches --trail-ember */
-  emberDark: '#9C3920', /* design-allow: darker ember for AA text on dune */
-  moss: '#5A6B4F',
-  sage: '#8FA085',
-  shadowDeep: 'rgba(45, 31, 18, 0.85)',
+  sand: 'var(--earth-sand)',
+  dune: 'var(--earth-dune)',
+  tan: 'var(--earth-tan)',
+  bark: 'var(--earth-bark)',
+  soil: 'var(--earth-soil)',
+  stone: 'var(--earth-stone)',
+  clay: 'var(--trail-clay)',
+  ember: 'var(--trail-ember)',
+  emberDark: '#9C3920', /* design-allow: darker ember for AA text on dune; no token yet */
+  moss: 'var(--trail-moss)',
+  sage: 'var(--trail-sage)',
+  shadowDeep: 'var(--shadow-deepest)',
 };
 
 // Signature Trail Peak card (earth-sand bg, bark border, offset shadow)
@@ -61,7 +61,7 @@ function NavPillBtn({ icon, onClick, primary, label }) {
       width: 40, height: 40, borderRadius: '50%',
       border: `4px solid ${TP.bark}`,
       background: primary ? TP.ember : TP.sand,
-      color: primary ? '#fff' : TP.soil,
+      color: primary ? 'var(--earth-sand)' : TP.soil,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       boxShadow: `3px 3px 0 0 ${TP.bark}`,
       cursor: 'pointer', padding: 0,
@@ -231,7 +231,7 @@ function TimerScreen({ onBack, onNew }) {
 
         <button style={{
           width: 84, height: 84, borderRadius: '50%',
-          background: TP.ember, border: `4px solid ${TP.bark}`, color: '#fff',
+          background: TP.ember, border: `4px solid ${TP.bark}`, color: 'var(--earth-sand)',
           boxShadow: `4px 4px 0 0 ${TP.bark}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           cursor: 'pointer', padding: 0,
@@ -292,7 +292,7 @@ function NewEntryScreen({ onBack }) {
         trailing={
           <button style={{
             padding: '8px 16px', borderRadius: 999,
-            background: TP.ember, color: '#fff',
+            background: TP.ember, color: 'var(--earth-sand)',
             border: `3px solid ${TP.bark}`,
             boxShadow: `3px 3px 0 0 ${TP.bark}`,
             fontSize: 13, fontWeight: 600, fontFamily: 'inherit',
@@ -402,7 +402,7 @@ function ReportsScreen() {
             <div key={o} style={{
               flex: 1, textAlign: 'center', padding: '8px 0',
               fontSize: 14, fontWeight: 600,
-              color: o === 'Week' ? '#fff' : TP.soil,
+              color: o === 'Week' ? 'var(--earth-sand)' : TP.soil,
               background: o === 'Week' ? TP.ember : 'transparent',
               borderRadius: 8, cursor: 'pointer',
               border: o === 'Week' ? `2px solid ${TP.bark}` : '2px solid transparent',
