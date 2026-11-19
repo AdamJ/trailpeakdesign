@@ -2,9 +2,6 @@ name: Markdown lint
 
 on:
   pull_request:
-    paths:
-      - '**/*.md'
-      - 'preview/**'
 
 jobs:
   markdown:

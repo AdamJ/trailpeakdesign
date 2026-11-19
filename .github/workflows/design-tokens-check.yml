@@ -2,11 +2,6 @@ name: Design token check
 
 on:
   pull_request:
-    paths:
-      - 'preview/**'
-      - 'ui_kits/**'
-      - 'social/**'
-      - '**/*.css'
 
 jobs:
   check:

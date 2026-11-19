@@ -2,9 +2,6 @@ name: HTML validate
 
 on:
   pull_request:
-    paths:
-      - 'preview/**/*.html'
-      - 'social/**/*.html'
 
 jobs:
   html-validate:

@@ -125,13 +125,13 @@ The `check-previews-index.mjs` CI script will fail if a preview file exists but 
 
 | Workflow                  | Trigger                                                | What it checks                                                                                                                                   |
 | ------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `accessibility-check.yml` | PR touching `preview/`, `ui_kits/`, `social/`, CSS     | pa11y-ci against WCAG2AA on all pages in `.pa11yci.json`                                                                                         |
-| `design-tokens-check.yml` | PR touching `preview/`, `ui_kits/`, `social/`, any CSS | `scripts/check-design-tokens.mjs` — flags hardcoded hex/rgb colors and blurred shadows in added lines                                            |
-| `html-validate.yml`       | PR touching `preview/**/*.html`, `social/**/*.html`    | html-validate with recommended rules                                                                                                             |
-| `markdown-lint.yml`       | PR touching `**/*.md`, `preview/**`                    | markdownlint-cli2 + cspell + PREVIEWS.md sync check                                                                                              |
+| `accessibility-check.yml` | Every PR                                               | pa11y-ci against WCAG2AA on all pages in `.pa11yci.json`                                                                                         |
+| `design-tokens-check.yml` | Every PR                                               | `scripts/check-design-tokens.mjs` — flags hardcoded hex/rgb colors and blurred shadows in added lines                                            |
+| `html-validate.yml`       | Every PR                                               | html-validate with recommended rules                                                                                                             |
+| `markdown-lint.yml`       | Every PR                                               | markdownlint-cli2 + cspell + PREVIEWS.md sync check                                                                                              |
 | `release.yml`             | Tag push `20*` or manual dispatch                      | Builds `trail-peak-<tag>.zip` (tokens CSS, `tokens.json`, fonts, assets, shadcn theme, docs) and publishes a GitHub Release with generated notes |
 
-There is no version-bump workflow: `main` is protected, so versions are not committed back. A version is a build id (`YYYY.MM.DD-N`, `N` = commit count on `main`) set by the Git tag when a release is cut; see `CONTRIBUTING.md`.
+The four PR workflows run on every PR with no path filter: the ruleset requires them, and a path-filtered check that never runs blocks merging forever. There is no version-bump workflow: `main` is protected, so versions are not committed back. A version is a build id (`YYYY.MM.DD-N`, `N` = commit count on `main`) set by the Git tag when a release is cut; see `CONTRIBUTING.md`.
 
 ## Documentation rules
 
