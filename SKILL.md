@@ -12,6 +12,8 @@ If the user invokes this skill without any other guidance, ask them what they wa
 
 Key files:
 
+- `components.css` — `.tp-*` component classes (button, card, form controls, page shell)
+- `llms.txt` — index for agents; `tokens.json` — generated token export
 - `README.md` — brand context, content fundamentals, visual foundations, iconography
 - `colors_and_type.css` — CSS variables for colors, type, spacing, radii, shadows, easing
 - `fonts/` — webfonts (Inter, Playfair Display, Fira Code, Pirata One)

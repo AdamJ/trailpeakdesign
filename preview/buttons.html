@@ -1,48 +1,34 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Trail Peak Design — Buttons</title><link rel="stylesheet" href="../colors_and_type.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trail Peak Design — Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../components.css">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
-body{margin:0;padding:28px;background:var(--bg-page);font-family:var(--font-sans);color:var(--fg-primary)}
-.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
-.lbl{font-family:var(--font-code);font-size:11px;color:var(--fg-muted);min-width:100px}
-.btn{font-family:var(--font-sans);font-size:16px;line-height:1;border-radius:12px;padding:12px 24px;cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1);font-weight:600}
-
-/* Primary: 4px border, shadow collapses on hover */
-.btn-primary{background:var(--trail-ember);border:4px solid var(--earth-bark);color:var(--paper-pure);box-shadow:4px 4px 0 0 var(--earth-bark)}
-.btn-primary:hover,.btn-primary.is-hover{box-shadow:2px 2px 0 0 var(--earth-bark);color:var(--earth-sand);transform:translate(2px,2px)}
-
-/* Secondary: 4px border, shadow collapses on hover */
-.btn-secondary{background:var(--earth-sand);border:4px solid var(--earth-bark);color:var(--earth-soil);box-shadow:4px 4px 0 0 var(--trail-moss)}
-.btn-secondary:hover,.btn-secondary.is-hover{background:var(--earth-tan);box-shadow:2px 2px 0 0 var(--trail-moss);transform:translate(2px,2px)}
-
-/* Outline */
-.btn-outline{background:transparent;border:1px solid var(--earth-bark);color:var(--earth-soil);backdrop-filter:blur(24px)}
-.btn-outline:hover{background:var(--overlay-paper)}
-
-/* Danger / destructive: 4px border, shadow collapses on hover */
-.btn-danger{background:var(--danger);border:4px solid var(--earth-bark);color:var(--danger-foreground);box-shadow:4px 4px 0 0 var(--earth-bark)}
-.btn-danger:hover,.btn-danger.is-hover{box-shadow:2px 2px 0 0 var(--earth-bark);transform:translate(2px,2px)}
-
-/* Icon: 4px border, always */
-.btn-icon{width:56px;height:56px;padding:0;border-radius:50%;border:4px solid var(--earth-bark);background:transparent;display:inline-flex;align-items:center;justify-content:center;color:var(--earth-soil);cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1)}
-.btn-icon:hover,.btn-icon.is-hover{background:var(--earth-bark);color:var(--earth-sand)}
-
-/* Social: 4px border. trail-moss bg / earth-sand text → trail-clay bg / ink-pure text on hover */
-.btn-social{background:var(--trail-moss);border:4px solid var(--earth-bark);color:var(--earth-sand);font-size:14px;padding:10px 16px;border-radius:12px;font-weight:600;box-shadow:4px 4px 0 0 var(--earth-bark);cursor:pointer;transition:all .22s cubic-bezier(.22,.61,.36,1);display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans)}
-.btn-social:hover,.btn-social.is-hover{background:var(--trail-clay);color:var(--ink-pure);box-shadow:2px 2px 0 0 var(--earth-bark);transform:translate(2px,2px)}
-
-.tag{font-family:var(--font-code);font-size:10px;color:var(--fg-muted);margin-left:4px}
-</style></head><body>
-<div class="row"><span class="lbl">primary</span><button class="btn btn-primary">Button</button><button class="btn btn-primary is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
-<div class="row"><span class="lbl">secondary</span><button class="btn btn-secondary">Button</button><button class="btn btn-secondary is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
-<div class="row"><span class="lbl">outline</span><button class="btn btn-outline">Button</button></div>
-<div class="row"><span class="lbl">danger</span><button class="btn btn-danger">Delete</button><button class="btn btn-danger is-hover">Hover</button><span class="tag">4px border · shadow shifts</span></div>
-<div class="row"><span class="lbl">icon</span>
-  <button class="btn-icon" aria-label="Scroll to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg></button>
-  <button class="btn-icon is-hover" aria-label="Scroll to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg></button>
-  <span class="tag">4px border</span>
+body { padding: var(--space-6); }
+.lbl { font-family: var(--font-code); font-size: var(--fs-12); color: var(--fg-secondary); min-width: 100px; }
+.tag { font-family: var(--font-code); font-size: var(--fs-12); color: var(--fg-secondary); margin-left: var(--space-1); }
+</style>
+</head>
+<body class="tp-page">
+<div class="tp-stack">
+  <div class="tp-row"><span class="lbl">primary</span><button class="tp-btn tp-btn--primary" type="button">Button</button><button class="tp-btn tp-btn--primary is-hover" type="button">Hover</button><span class="tag">4px border · shadow shifts</span></div>
+  <div class="tp-row"><span class="lbl">secondary</span><button class="tp-btn tp-btn--secondary" type="button">Button</button><button class="tp-btn tp-btn--secondary is-hover" type="button">Hover</button><span class="tag">4px border · shadow shifts</span></div>
+  <div class="tp-row"><span class="lbl">outline</span><button class="tp-btn tp-btn--outline" type="button">Button</button><button class="tp-btn tp-btn--outline is-hover" type="button">Hover</button></div>
+  <div class="tp-row"><span class="lbl">danger</span><button class="tp-btn tp-btn--danger" type="button">Delete</button><button class="tp-btn tp-btn--danger is-hover" type="button">Hover</button><span class="tag">4px border · shadow shifts</span></div>
+  <div class="tp-row"><span class="lbl">icon</span>
+    <button class="tp-btn tp-btn--icon" type="button" aria-label="Scroll to top"><i class="ph ph-arrow-up" aria-hidden="true"></i></button>
+    <button class="tp-btn tp-btn--icon is-hover" type="button" aria-label="Scroll to top"><i class="ph ph-arrow-up" aria-hidden="true"></i></button>
+    <span class="tag">4px border</span>
+  </div>
+  <div class="tp-row"><span class="lbl">social</span>
+    <button class="tp-btn tp-btn--social" type="button"><i class="ph-fill ph-twitter-logo" aria-hidden="true"></i>Follow</button>
+    <button class="tp-btn tp-btn--social is-hover" type="button"><i class="ph-fill ph-twitter-logo" aria-hidden="true"></i>Hover</button>
+    <span class="tag">4px border · moss → ember on hover</span>
+  </div>
 </div>
-<div class="row"><span class="lbl">social</span>
-  <button class="btn-social"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.92a8.22 8.22 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.19 8.19 0 0 1-2.6 1 4.1 4.1 0 0 0-7.1 3.74A11.65 11.65 0 0 1 3.4 4.86a4.1 4.1 0 0 0 1.27 5.48 4.08 4.08 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.58a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18 0-.35-.01-.53A8.35 8.35 0 0 0 22 5.92z"/></svg>Follow</button>
-  <button class="btn-social is-hover"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.92a8.22 8.22 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.19 8.19 0 0 1-2.6 1 4.1 4.1 0 0 0-7.1 3.74A11.65 11.65 0 0 1 3.4 4.86a4.1 4.1 0 0 0 1.27 5.48 4.08 4.08 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.58a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18 0-.35-.01-.53A8.35 8.35 0 0 0 22 5.92z"/></svg>Hover</button>
-  <span class="tag">4px border · trail-moss/earth-sand → trail-clay/ink-pure</span>
-</div>
-</body></html>
+</body>
+</html>

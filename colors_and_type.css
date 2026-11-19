@@ -60,15 +60,16 @@
   --earth-sand:     rgb(245, 241, 232);/* page background / cream */
   --earth-dune:     rgb(232, 220, 200);/* secondary background */
   --earth-tan:      rgb(201, 184, 154);/* tertiary / code bg */
-  --earth-mist:     rgb(180, 168, 156);/* warm light neutral — muted text on dark surfaces */
+  --earth-mist:     rgb(200, 189, 178);/* warm light neutral — muted text on dark surfaces (AA on soil, bark, bark-raise) */
   --earth-bark-raise: rgb(94, 68, 50); /* half-step lighter than earth-bark — dark elevation step */
 
   --trail-moss:     rgb(90, 107, 79);  /* muted forest green */
   --trail-sage:     rgb(134, 169, 148);/* lighter sage accent */
+  --trail-moss-deep: rgb(80, 95, 70);  /* darker moss — AA text on sand and dune */
   --trail-clay:     rgb(211, 95, 61);  /* burnt orange / trail marker */
   --trail-ember:    rgb(179, 74, 45);  /* deeper clay — primary button */
   --trail-rust:     rgb(155, 42, 32);  /* brick red — error/danger (light) */
-  --trail-rust-light: rgb(224, 108, 90); /* lightened rust — error/danger (dark) */
+  --trail-rust-light: rgb(240, 136, 118); /* lightened rust — error/danger (dark); AA on soil and bark */
 
   --earth-stone-light: rgb(150, 138, 128); /* lightened stone — muted text on dark surfaces */
 
@@ -100,6 +101,12 @@
   --accent:         var(--trail-clay);
   --accent-strong:  var(--trail-ember);
   --accent-alt:     var(--trail-moss);
+  --accent-alt-text: var(--trail-moss-deep); /* text-safe accent-alt; use for 12-14px text */
+
+  --focus-ring:     var(--trail-ember); /* 4.74:1 on sand */
+  --accent-foreground: var(--earth-sand); /* text on --accent-strong fills; stays light in dark mode */
+  --shadow-ink:     var(--earth-bark);  /* offset shadow + button border color */
+  --input-border:   var(--border);      /* form-control border */
 
   --border:         var(--earth-bark);
   --border-subtle:  rgba(74, 52, 38, 0.15);
@@ -158,6 +165,8 @@
   --text-primary:   var(--fg-primary);
   --text-secondary: var(--fg-secondary);
   --text-muted:     var(--fg-muted);
+
+  color-scheme: light;
 }
 
 /* ---------- Dark mode ----------
@@ -166,6 +175,8 @@
    only the semantic roles that consume them are remapped. Mirrors the
    shadcn/ui dark theme in shadcn/theme.css. */
 .dark {
+  color-scheme: dark; /* native controls, scrollbars, select popups */
+
   --fg-primary:     var(--earth-sand);   /* primary text */
   --fg-secondary:   var(--earth-tan);    /* secondary text */
   --fg-muted:       var(--earth-mist);   /* muted text */
@@ -179,7 +190,25 @@
   --border-subtle:  rgba(245, 241, 232, 0.15);
 
   --danger:            var(--trail-rust-light);
+  --accent-alt-text:   var(--trail-sage);
+  --focus-ring:        var(--trail-clay);   /* 4.16:1 on soil */
+  --shadow-ink:        var(--earth-bark-raise);
+  --input-border:      var(--fg-muted);     /* dark --border is too faint for controls */
   --danger-foreground: var(--earth-soil);
+}
+
+/* ---------- Focus + reduced motion ---------- */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ---------- Semantic text styles ---------- */
@@ -268,17 +297,17 @@
 .code-inline {
   font-family: var(--font-code);
   font-size: var(--fs-14);
-  background: var(--earth-tan);
-  border-radius: var(--radius-md);
+  background: var(--bg-3);
+  border-radius: var(--radius-sm);
   padding: 1px 6px;
   color: var(--fg-primary);
 }
 .code-block {
   font-family: var(--font-code);
   font-size: var(--fs-14);
-  background: var(--earth-tan);
+  background: var(--bg-3);
   border: 1px solid var(--trail-moss);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 8px 12px;
   color: var(--fg-primary);
   white-space: pre;
@@ -290,5 +319,5 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--trail-moss);
+  color: var(--accent-alt-text);
 }

@@ -1,17 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Trail Peak Design — Card</title><link rel="stylesheet" href="../colors_and_type.css">
-<style>body{margin:0;padding:22px;background:var(--bg-page);font-family:var(--font-sans);color:var(--fg-primary)}
-.card{width:380px;background:var(--earth-sand);border:1px solid var(--earth-bark);border-radius:20px;box-shadow:8px 8px 0 0 var(--shadow-deep);padding:22px;display:flex;flex-direction:column;gap:10px}
-.card .ph{height:120px;background:repeating-linear-gradient(135deg,var(--earth-dune) 0 10px,var(--earth-tan) 10px 20px);border:1px dashed var(--earth-bark);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-code);font-size:11px}
-.card h3{margin:0;font-family:var(--font-serif);font-size:24px}
-.card p{margin:0;font-size:14px;color:var(--fg-secondary)}
-.card .foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
-.card .meta{font-family:var(--font-code);font-size:11px;color:var(--fg-muted)}
-.card .link{font-weight:700;color:var(--trail-moss);text-decoration:underline;font-size:14px}
-</style></head><body>
-<div class="card">
-  <div class="ph">image placeholder</div>
-  <h3>Time Tracker Pro</h3>
-  <p>Native iOS time tracking for small teams, shipped in the winter of '25.</p>
-  <div class="foot"><span class="meta">Case study · 8 min</span><a class="link">Read →</a></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trail Peak Design — Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../components.css">
+<style>
+body { padding: var(--space-6); }
+.card-demo { width: 380px; max-width: 100%; }
+.placeholder { height: 120px; background: repeating-linear-gradient(135deg, var(--earth-dune) 0 10px, var(--earth-tan) 10px 20px); border: 1px dashed var(--border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--earth-soil); font-family: var(--font-code); font-size: var(--fs-12); }
+.foot { display: flex; justify-content: space-between; align-items: center; }
+.meta { font-family: var(--font-code); font-size: var(--fs-12); color: var(--fg-secondary); }
+.link { font-weight: 700; color: var(--accent-alt-text); text-decoration: underline; font-size: var(--fs-14); }
+</style>
+</head>
+<body class="tp-page">
+<div class="tp-card tp-stack card-demo">
+  <div class="placeholder">image placeholder</div>
+  <h3 class="tp-h3">Time Tracker Pro</h3>
+  <p class="tp-body-sm">Native iOS time tracking for small teams, shipped in the winter of '25.</p>
+  <div class="foot"><span class="meta">Case study · 8 min</span><a class="link" href="#">Read →</a></div>
 </div>
-</body></html>
+</body>
+</html>

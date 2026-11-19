@@ -67,12 +67,12 @@ The Figma pseudocode was the source of truth for colors, type, spacing, and comp
 Every screen sits on a cream (`#F5F1E8 / earth-sand`) with deeper browns for text and borders and a single burnt-orange accent (`#D35F3D / trail-clay`) for interaction. Green (`#5A6B4F / trail-moss`) is a secondary accent reserved for subdued navigation elements, code outlines, and secondary-button shadows. Black is avoided — the darkest ink is `#2D1F12 / earth-soil`, a near-black brown that feels warmer on cream.
 
 **Error / destructive — `trail-rust`.**
-`#9B2A20 / trail-rust` (lightened to `#E06C5A` in dark mode) is the system's error/destructive color — brick red, in the same warm-red family as trail-clay/trail-ember but desaturated and dark enough to pass WCAG AA on cream (6.78:1) and with cream/soil text on it. Bound to `--danger` / `--danger-foreground`. Use for destructive buttons, form-field errors, and inline error text.
+`#9B2A20 / trail-rust` (lightened to `#F08876` in dark mode) is the system's error/destructive color — brick red, in the same warm-red family as trail-clay/trail-ember but desaturated and dark enough to pass WCAG AA on cream (6.78:1) and with cream/soil text on it. Bound to `--danger` / `--danger-foreground`. Use for destructive buttons, form-field errors, and inline error text.
 
 **Dark mode.**
 Add `class="dark"` to `<html>` (or any ancestor) to flip the semantic tokens (`--fg-*`, `--bg-*`, `--border*`, `--danger*`) to their dark-mode values, defined in the `.dark` block of `colors_and_type.css`. Two neutrals exist solely for dark surfaces:
 
-- `earth-mist` (`#B4A89C`) — `--fg-muted` in dark mode (6.85:1 on earth-soil, 4.98:1 on earth-bark).
+- `earth-mist` (`#C8BDB2`) — `--fg-muted` in dark mode (8.64:1 on earth-soil, 6.28:1 on earth-bark, 4.84:1 on earth-bark-raise).
 - `earth-bark-raise` (`#5E4432`) — `--bg-3` and `--border` in dark mode; a half-step lighter than `earth-bark` for visible elevation without a new hue.
 
 Brand accents (`trail-clay`, `trail-ember`, `trail-moss`) stay constant across themes. This mirrors the dark theme already shipped in `shadcn/theme.css`.
@@ -94,7 +94,7 @@ Brand accents (`trail-clay`, `trail-ember`, `trail-moss`) stay constant across t
 
 **Spacing.** 4px base. Most used: 4, 8, 12, 16, 20, 24, 32, 48, 80. Generous vertical rhythm — sections breathe, lists don't cram.
 
-**Borders.** Everything uses a 1px `earth-bark` hairline; dashed purple borders in Figma are layout-only (never render). Cards and buttons have crisp 1px strokes.
+**Borders.** Everything uses a 1px `earth-bark` hairline; dashed purple borders in Figma are layout-only (never render). Cards and inputs have crisp 1px strokes; buttons use a 4px stroke.
 
 **Corner radii.**
 
@@ -116,7 +116,7 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 
 **Hover / press states.**
 
-- **Hover:** accent color swaps (primary button keeps fill, text tints to `earth-dune`; secondary button swaps `sand → tan`; nav link underlines `trail-clay`; card grows its shadow by 4px).
+- **Hover:** accent color swaps (primary button keeps fill and text (a dune tint on ember falls below 4.5:1), the shadow collapses and the button moves 2px; secondary button swaps `sand → tan`; nav link underlines `trail-clay`; card grows its shadow by 4px).
 - **Press:** shadow collapses to `2px 2px 0 0` — the surface "settles into the paper".
 - Never opacity-fade; always a deliberate color or offset change.
 
@@ -153,6 +153,7 @@ Never use blurry elevation shadows — they fight the paper-sticker aesthetic.
 ├── PREVIEWS.md                      ← preview index
 ├── SKILL.md                         ← Agent Skills entry (user-invocable)
 ├── colors_and_type.css              ← tokens + semantic type classes
+├── components.css                   ← .tp-* component classes (button, card, form controls)
 ├── assets/
 │   └── logo-app-icon.png            ← triangular monogram
 ├── preview/                         ← design-system token previews

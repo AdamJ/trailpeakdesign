@@ -1,0 +1,181 @@
+{
+  "$description": "Generated from components.css. Do not edit by hand.",
+  "components": {
+    "tp-page": {
+      "use": "On the body element: page background, text color, sans font",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--bg-page",
+        "--fg-primary",
+        "--font-sans"
+      ],
+      "darkTokens": []
+    },
+    "tp-container": {
+      "use": "1200px centered column with --space-6 gutters; --narrow is 720px for form pages",
+      "variants": [
+        "tp-container--narrow"
+      ],
+      "states": [],
+      "tokens": [
+        "--space-6"
+      ],
+      "darkTokens": []
+    },
+    "tp-stack": {
+      "use": "Vertical layout with --space-4 gap",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--space-4"
+      ],
+      "darkTokens": []
+    },
+    "tp-row": {
+      "use": "Wrapping horizontal layout with --space-4 gap",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--space-4"
+      ],
+      "darkTokens": []
+    },
+    "tp-btn": {
+      "use": "Buttons: 4px border and offset shadow; hover and press collapse the shadow and move 2px. Variants: primary, secondary, danger, outline, icon, social. .is-hover forces the hover look for specimens",
+      "variants": [
+        "tp-btn--danger",
+        "tp-btn--icon",
+        "tp-btn--outline",
+        "tp-btn--primary",
+        "tp-btn--secondary",
+        "tp-btn--social"
+      ],
+      "states": [
+        ".is-hover",
+        ":active",
+        ":disabled",
+        ":hover",
+        "[aria-disabled=\"true\"]"
+      ],
+      "tokens": [
+        "--accent-foreground",
+        "--accent-strong",
+        "--border",
+        "--danger",
+        "--danger-foreground",
+        "--dur-med",
+        "--earth-sand",
+        "--earth-soil",
+        "--earth-tan",
+        "--ease-trail",
+        "--fg-primary",
+        "--font-sans",
+        "--fs-14",
+        "--fs-16",
+        "--fs-20",
+        "--overlay-paper",
+        "--radius-md",
+        "--shadow-ink",
+        "--space-2",
+        "--space-3",
+        "--space-4",
+        "--space-6",
+        "--trail-moss"
+      ],
+      "darkTokens": [
+        "--bg-3",
+        "--bg-secondary",
+        "--fg-primary"
+      ]
+    },
+    "tp-card": {
+      "use": "Surface: 1px border, --radius-xl, 8px offset shadow (12px on hover); pair with .tp-stack for content",
+      "variants": [],
+      "states": [
+        ":hover"
+      ],
+      "tokens": [
+        "--bg-page",
+        "--border",
+        "--dur-med",
+        "--ease-trail",
+        "--radius-xl",
+        "--shadow-deep",
+        "--space-6",
+        "--tp-card-shadow"
+      ],
+      "darkTokens": [
+        "--bg-secondary",
+        "--earth-bark-raise"
+      ]
+    },
+    "tp-field": {
+      "use": "Wraps a label and one control; .tp-hint for helper text, .tp-error for the error message",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--fg-primary",
+        "--fs-14",
+        "--space-1"
+      ],
+      "darkTokens": []
+    },
+    "tp-hint": {
+      "use": "Helper text below a control",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--fg-secondary",
+        "--fs-12"
+      ],
+      "darkTokens": []
+    },
+    "tp-input": {
+      "use": "Text input, textarea, select; aria-invalid=\"true\" shows the error state",
+      "variants": [],
+      "states": [
+        ":focus",
+        "[aria-invalid=\"true\"]"
+      ],
+      "tokens": [
+        "--bg-page",
+        "--danger",
+        "--fg-primary",
+        "--font-sans",
+        "--fs-16",
+        "--input-border",
+        "--radius-sm",
+        "--shadow-card",
+        "--space-3",
+        "--trail-clay"
+      ],
+      "darkTokens": [
+        "--earth-bark-raise"
+      ]
+    },
+    "tp-error": {
+      "use": "Error message inside a .tp-field; role=\"alert\", leads with a ph-warning-circle icon",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--danger",
+        "--fs-12",
+        "--space-1"
+      ],
+      "darkTokens": []
+    },
+    "tp-check": {
+      "use": "Checkbox or radio wrapped in its label",
+      "variants": [],
+      "states": [],
+      "tokens": [
+        "--accent-strong",
+        "--fg-primary",
+        "--fs-14",
+        "--space-2"
+      ],
+      "darkTokens": []
+    }
+  }
+}

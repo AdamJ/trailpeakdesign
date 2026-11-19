@@ -1,0 +1,222 @@
+/* ============================================================
+   Trail Peak Design System — Components
+   Requires colors_and_type.css (load it first). Every value is a
+   token; no hardcoded colors. Dark mode: add class="dark" to <html>.
+   Class names use the .tp- prefix to avoid collisions.
+   ============================================================ */
+
+/* ---------- Page shell ---------- */
+/** @use On the body element: page background, text color, sans font */
+.tp-page {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+}
+/** @use 1200px centered column with --space-6 gutters; --narrow is 720px for form pages */
+.tp-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+.tp-container--narrow { max-width: 720px; }
+/** @use Vertical layout with --space-4 gap */
+.tp-stack { display: flex; flex-direction: column; gap: var(--space-4); }
+/** @use Wrapping horizontal layout with --space-4 gap */
+.tp-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+
+/* ---------- Button ---------- */
+/** @use Buttons: 4px border and offset shadow; hover and press collapse the shadow and move 2px. Variants: primary, secondary, danger, outline, icon, social. .is-hover forces the hover look for specimens */
+.tp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  font-weight: 600;
+  line-height: 1;
+  padding: var(--space-3) var(--space-6);
+  border: 4px solid var(--shadow-ink);
+  border-radius: var(--radius-md);
+  box-shadow: 4px 4px 0 0 var(--shadow-ink);
+  cursor: pointer;
+  transition: box-shadow var(--dur-med) var(--ease-trail),
+    transform var(--dur-med) var(--ease-trail),
+    background-color var(--dur-med) var(--ease-trail);
+}
+.tp-btn:hover,
+.tp-btn.is-hover,
+.tp-btn:active {
+  box-shadow: 2px 2px 0 0 var(--shadow-ink);
+  transform: translate(2px, 2px);
+}
+.tp-btn:disabled,
+.tp-btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tp-btn--primary {
+  background: var(--accent-strong);
+  color: var(--accent-foreground);
+}
+
+.tp-btn--secondary {
+  background: var(--earth-sand);
+  color: var(--earth-soil);
+  box-shadow: 4px 4px 0 0 var(--trail-moss);
+}
+.tp-btn--secondary:hover,
+.tp-btn--secondary.is-hover,
+.tp-btn--secondary:active {
+  background: var(--earth-tan);
+  box-shadow: 2px 2px 0 0 var(--trail-moss);
+}
+.dark .tp-btn--secondary {
+  background: var(--bg-secondary);
+  color: var(--fg-primary);
+}
+.dark .tp-btn--secondary:hover,
+.dark .tp-btn--secondary.is-hover,
+.dark .tp-btn--secondary:active {
+  background: var(--bg-3);
+}
+
+.tp-btn--danger {
+  background: var(--danger);
+  color: var(--danger-foreground);
+}
+
+/* Outline: 1px border, no shadow; the only blur in the system is this backdrop-filter */
+.tp-btn--outline,
+.tp-btn--outline:hover,
+.tp-btn--outline.is-hover,
+.tp-btn--outline:active {
+  background: transparent;
+  color: var(--fg-primary);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  transform: none;
+  backdrop-filter: blur(24px);
+}
+.tp-btn--outline:hover,
+.tp-btn--outline.is-hover { background: var(--overlay-paper); }
+.dark .tp-btn--outline:hover,
+.dark .tp-btn--outline.is-hover { background: var(--bg-secondary); }
+
+/* Icon: 56px circle, no shadow; hover fills with --shadow-ink */
+.tp-btn--icon {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg-primary);
+  box-shadow: none;
+  font-size: var(--fs-20);
+}
+.tp-btn--icon:hover,
+.tp-btn--icon.is-hover,
+.tp-btn--icon:active {
+  background: var(--shadow-ink);
+  color: var(--accent-foreground);
+  box-shadow: none;
+  transform: none;
+}
+
+/* Social: moss fill; hover swaps to ember (sand on clay is only 3.40:1) */
+.tp-btn--social {
+  background: var(--trail-moss);
+  color: var(--earth-sand);
+  font-size: var(--fs-14);
+  padding: var(--space-3) var(--space-4);
+}
+.tp-btn--social:hover,
+.tp-btn--social.is-hover,
+.tp-btn--social:active {
+  background: var(--accent-strong);
+  color: var(--accent-foreground);
+}
+
+/* ---------- Card ---------- */
+/** @use Surface: 1px border, --radius-xl, 8px offset shadow (12px on hover); pair with .tp-stack for content */
+.tp-card {
+  --tp-card-shadow: var(--shadow-deep);
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 8px 8px 0 0 var(--tp-card-shadow);
+  padding: var(--space-6);
+  transition: box-shadow var(--dur-med) var(--ease-trail);
+}
+.tp-card:hover { box-shadow: 12px 12px 0 0 var(--tp-card-shadow); }
+.dark .tp-card {
+  --tp-card-shadow: var(--earth-bark-raise);
+  background: var(--bg-secondary);
+}
+
+/* ---------- Form controls ---------- */
+/** @use Wraps a label and one control; .tp-hint for helper text, .tp-error for the error message */
+.tp-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--fs-14);
+  font-weight: 600;
+  color: var(--fg-primary);
+}
+/** @use Helper text below a control */
+.tp-hint {
+  font-size: var(--fs-12);
+  font-weight: 400;
+  color: var(--fg-secondary);
+}
+
+/** @use Text input, textarea, select; aria-invalid="true" shows the error state */
+.tp-input {
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  font-weight: 400;
+  padding: var(--space-3);
+  background: var(--bg-page);
+  color: var(--fg-primary);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 2px 2px 0 0 var(--shadow-card);
+}
+.dark .tp-input { box-shadow: 2px 2px 0 0 var(--earth-bark-raise); }
+.tp-input:focus {
+  border-color: var(--trail-clay);
+  box-shadow: 2px 2px 0 0 var(--trail-clay);
+}
+.tp-input[aria-invalid="true"] {
+  border-color: var(--danger);
+  box-shadow: 2px 2px 0 0 var(--danger);
+}
+
+/** @use Error message inside a .tp-field; role="alert", leads with a ph-warning-circle icon */
+.tp-error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--fs-12);
+  font-weight: 400;
+  color: var(--danger);
+}
+
+/** @use Checkbox or radio wrapped in its label */
+.tp-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-14);
+  color: var(--fg-primary);
+}
+.tp-check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent-strong);
+}
