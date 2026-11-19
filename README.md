@@ -1,10 +1,6 @@
 # Trail Peak Design System
 
-<!-- version:start -->
-
-**Build:** 2026.06.24-11
-
-<!-- version:end -->
+[Latest release](https://github.com/AdamJ/trailpeakdesign/releases/latest) — versions are build ids (`YYYY.MM.DD-N`), set when a release is tagged.
 
 An outdoor-themed design system for portfolio, marketing and app surfaces by Adam Jolicoeur. Clean, editorial layouts with a warm earthen palette, subtle animations, and a quiet reverence for type.
 
