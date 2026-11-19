@@ -7,7 +7,7 @@ Read `CLAUDE.md` first for tokens, design constraints, and CI. Short version:
 3. Use `var(--token)` values. No hardcoded colors, no blurred shadows (see exceptions in `CLAUDE.md`).
 4. Add or update a `preview/*.html` page for any new component or token. List it in `PREVIEWS.md` and `.pa11yci.json`.
 5. Check contrast for both light and `.dark` themes against the pairing rules in `CLAUDE.md`.
-6. Update `README.md` and `CLAUDE.md` when content changes. `CHANGELOG.md` is generated.
+6. Update `README.md` and `CLAUDE.md` when content changes. Release notes are generated at release time; `CHANGELOG.md` is frozen history.
 
 ## Breaking changes
 
@@ -15,7 +15,7 @@ Renaming or removing a token, class, or changing a token's value in a way that s
 
 ## Releases
 
-Consumers install from [GitHub Releases](https://github.com/AdamJ/trailpeakdesign/releases). To publish one, tag a `main` commit with its build id and push the tag (for example `git tag 2026.11.18-14 && git push origin 2026.11.18-14`), or run the Release workflow manually. The release holds `colors_and_type.css`, `tokens.json`, and a zip with fonts, assets, the shadcn theme, and docs. Notes come from commit subjects, so `BREAKING:` subjects surface there.
+There is no version file to bump. Consumers install from [GitHub Releases](https://github.com/AdamJ/trailpeakdesign/releases). To publish one, tag a `main` commit with its build id (UTC date plus the commit count on `main`, for example `git tag -a 2026.11.19-14 -m "Trail Peak 2026.11.19-14" && git push origin 2026.11.19-14`), or run the Release workflow manually; with no tag input it computes the id for you. The release holds `colors_and_type.css`, `tokens.json`, and a zip with fonts, assets, the shadcn theme, and docs. Notes come from commit subjects, so `BREAKING:` subjects surface there.
 
 ## Issues
 

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag (defaults to the build id in VERSION)"
+        description: "Release tag (defaults to a build id: UTC date plus commit count)"
         required: false
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           if [ "$EVENT_NAME" = "push" ]; then TAG="$GITHUB_REF_NAME"; else TAG="$INPUT_TAG"; fi
-          [ -n "$TAG" ] || TAG="$(cat VERSION)"
+          [ -n "$TAG" ] || TAG="$(date -u +%Y.%m.%d)-$(git rev-list --count HEAD)"
           case "$TAG" in *[!A-Za-z0-9._-]*) echo "invalid tag" >&2; exit 1;; esac
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
