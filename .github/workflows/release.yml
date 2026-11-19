@@ -27,14 +27,14 @@ jobs:
 
       - name: Resolve tag
         id: tag
+        env:
+          INPUT_TAG: ${{ github.event.inputs.tag }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            TAG="${GITHUB_REF_NAME}"
-          else
-            TAG="${{ github.event.inputs.tag }}"
-            [ -n "$TAG" ] || TAG="$(cat VERSION)"
-          fi
-          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          if [ "$EVENT_NAME" = "push" ]; then TAG="$GITHUB_REF_NAME"; else TAG="$INPUT_TAG"; fi
+          [ -n "$TAG" ] || TAG="$(cat VERSION)"
+          case "$TAG" in *[!A-Za-z0-9._-]*) echo "invalid tag" >&2; exit 1;; esac
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
       - name: Regenerate tokens.json and components.json
         run: |
@@ -42,8 +42,9 @@ jobs:
           node scripts/build-components-json.mjs
 
       - name: Package
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
         run: |
-          TAG="${{ steps.tag.outputs.tag }}"
           mkdir -p dist
           zip -r "dist/trail-peak-${TAG}.zip" \
             colors_and_type.css components.css components.json tokens.json llms.txt \
@@ -54,8 +55,8 @@ jobs:
       - name: Publish release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.tag.outputs.tag }}
         run: |
-          TAG="${{ steps.tag.outputs.tag }}"
           gh release create "$TAG" dist/* \
             --target "${GITHUB_SHA}" \
             --title "Trail Peak ${TAG}" \

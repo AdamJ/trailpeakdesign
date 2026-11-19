@@ -65,11 +65,14 @@ for (const [name, c] of Object.entries(components)) {
 }
 writeFileSync("components.json", JSON.stringify(out, null, 2) + "\n");
 
-const rows = Object.entries(out.components).map(([name, c]) => {
+const cells = Object.entries(out.components).map(([name, c]) => {
   const variants = c.variants.length ? ` + ${c.variants.map((v) => `\`${v.replace(name, "")}\``).join(", ")}` : "";
-  return `| \`.${name}\`${variants} | ${c.use ?? ""} |`;
+  return [`\`.${name}\`${variants}`, c.use ?? ""];
 });
-const table = ["| Class | Use |", "| --- | --- |", ...rows].join("\n");
+const header = ["Class", "Use"];
+const widths = [0, 1].map((i) => Math.max(header[i].length, ...cells.map((r) => r[i].length)));
+const fmt = (r) => `| ${r.map((c, i) => c.padEnd(widths[i])).join(" | ")} |`;
+const table = [fmt(header), `| ${widths.map((w) => "-".repeat(w)).join(" | ")} |`, ...cells.map(fmt)].join("\n");
 const md = readFileSync("CLAUDE.md", "utf8");
 const start = "<!-- components:start -->";
 const end = "<!-- components:end -->";

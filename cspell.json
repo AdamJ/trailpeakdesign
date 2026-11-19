@@ -14,6 +14,11 @@
     "webfonts",
     "prefs",
     "shadcn",
-    "Phosphor"
+    "Phosphor",
+    "llms"
+  ],
+  "ignorePaths": [
+    "ds-inspection/**",
+    "Claude outputs/**"
   ]
 }

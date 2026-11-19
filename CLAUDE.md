@@ -27,17 +27,17 @@ This is a **CSS-only, no-build design system**. There is no package.json, no bun
 
 Token categories and their locations within the file:
 
-| Category              | CSS custom properties                                          |
-| --------------------- | -------------------------------------------------------------- |
-| Brand palette         | `--earth-*`, `--trail-*`, `--ink-*`, `--paper-*`               |
-| Shadows               | `--shadow-*`, `--overlay-*`                                    |
+| Category              | CSS custom properties                                                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Brand palette         | `--earth-*`, `--trail-*`, `--ink-*`, `--paper-*`                                                                                   |
+| Shadows               | `--shadow-*`, `--overlay-*`                                                                                                        |
 | Semantic colors       | `--fg-*`, `--bg-*`, `--accent*`, `--border*`, `--danger*`, `--focus-ring`, `--accent-foreground`, `--shadow-ink`, `--input-border` |
-| Typography families   | `--font-sans`, `--font-serif`, `--font-display`, `--font-code` |
-| Type scale            | `--fs-12` through `--fs-96`                                    |
-| Spacing               | `--space-1` through `--space-20` (4px base)                    |
-| Radii                 | `--radius-xs` through `--radius-pill`                          |
-| Motion                | `--ease-trail`, `--dur-fast`, `--dur-med`, `--dur-slow`        |
-| Semantic text aliases | `--text-primary`, `--text-secondary`, `--text-muted`           |
+| Typography families   | `--font-sans`, `--font-serif`, `--font-display`, `--font-code`                                                                     |
+| Type scale            | `--fs-12` through `--fs-96`                                                                                                        |
+| Spacing               | `--space-1` through `--space-20` (4px base)                                                                                        |
+| Radii                 | `--radius-xs` through `--radius-pill`                                                                                              |
+| Motion                | `--ease-trail`, `--dur-fast`, `--dur-med`, `--dur-slow`                                                                            |
+| Semantic text aliases | `--text-primary`, `--text-secondary`, `--text-muted`                                                                               |
 
 Dark mode is a `.dark` class block in `colors_and_type.css` — it remaps semantic tokens only, never palette tokens.
 
@@ -64,19 +64,19 @@ Dark mode is a `.dark` class block in `colors_and_type.css` — it remaps semant
 `components.css` is the source of truth for component styles; `components.json` and the table below are generated from it (`node scripts/build-components-json.mjs`). Load it after `colors_and_type.css`. Do not re-implement these in product CSS; extend the classes. Specimens: `preview/components.html`.
 
 <!-- components:start -->
-| Class | Use |
-| --- | --- |
-| `.tp-page` | On the body element: page background, text color, sans font |
-| `.tp-container` + `--narrow` | 1200px centered column with --space-6 gutters; --narrow is 720px for form pages |
-| `.tp-stack` | Vertical layout with --space-4 gap |
-| `.tp-row` | Wrapping horizontal layout with --space-4 gap |
+| Class                                                                                 | Use                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.tp-page`                                                                            | On the body element: page background, text color, sans font                                                                                                                                         |
+| `.tp-container` + `--narrow`                                                          | 1200px centered column with --space-6 gutters; --narrow is 720px for form pages                                                                                                                     |
+| `.tp-stack`                                                                           | Vertical layout with --space-4 gap                                                                                                                                                                  |
+| `.tp-row`                                                                             | Wrapping horizontal layout with --space-4 gap                                                                                                                                                       |
 | `.tp-btn` + `--danger`, `--icon`, `--outline`, `--primary`, `--secondary`, `--social` | Buttons: 4px border and offset shadow; hover and press collapse the shadow and move 2px. Variants: primary, secondary, danger, outline, icon, social. .is-hover forces the hover look for specimens |
-| `.tp-card` | Surface: 1px border, --radius-xl, 8px offset shadow (12px on hover); pair with .tp-stack for content |
-| `.tp-field` | Wraps a label and one control; .tp-hint for helper text, .tp-error for the error message |
-| `.tp-hint` | Helper text below a control |
-| `.tp-input` | Text input, textarea, select; aria-invalid="true" shows the error state |
-| `.tp-error` | Error message inside a .tp-field; role="alert", leads with a ph-warning-circle icon |
-| `.tp-check` | Checkbox or radio wrapped in its label |
+| `.tp-card`                                                                            | Surface: 1px border, --radius-xl, 8px offset shadow (12px on hover); pair with .tp-stack for content                                                                                                |
+| `.tp-field`                                                                           | Wraps a label and one control; .tp-hint for helper text, .tp-error for the error message                                                                                                            |
+| `.tp-hint`                                                                            | Helper text below a control                                                                                                                                                                         |
+| `.tp-input`                                                                           | Text input, textarea, select; aria-invalid="true" shows the error state                                                                                                                             |
+| `.tp-error`                                                                           | Error message inside a .tp-field; role="alert", leads with a ph-warning-circle icon                                                                                                                 |
+| `.tp-check`                                                                           | Checkbox or radio wrapped in its label                                                                                                                                                              |
 <!-- components:end -->
 
 Markup rules:
@@ -123,14 +123,14 @@ The `check-previews-index.mjs` CI script will fail if a preview file exists but 
 
 ## CI workflows
 
-| Workflow                  | Trigger                                                | What it checks                                                                                        |
-| ------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `accessibility-check.yml` | PR touching `preview/`, `ui_kits/`, `social/`, CSS     | pa11y-ci against WCAG2AA on all pages in `.pa11yci.json`                                              |
-| `design-tokens-check.yml` | PR touching `preview/`, `ui_kits/`, `social/`, any CSS | `scripts/check-design-tokens.mjs` — flags hardcoded hex/rgb colors and blurred shadows in added lines |
-| `html-validate.yml`       | PR touching `preview/**/*.html`, `social/**/*.html`    | html-validate with recommended rules                                                                  |
-| `markdown-lint.yml`       | PR touching `**/*.md`, `preview/**`                    | markdownlint-cli2 + cspell + PREVIEWS.md sync check                                                   |
+| Workflow                  | Trigger                                                | What it checks                                                                                                                                   |
+| ------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accessibility-check.yml` | PR touching `preview/`, `ui_kits/`, `social/`, CSS     | pa11y-ci against WCAG2AA on all pages in `.pa11yci.json`                                                                                         |
+| `design-tokens-check.yml` | PR touching `preview/`, `ui_kits/`, `social/`, any CSS | `scripts/check-design-tokens.mjs` — flags hardcoded hex/rgb colors and blurred shadows in added lines                                            |
+| `html-validate.yml`       | PR touching `preview/**/*.html`, `social/**/*.html`    | html-validate with recommended rules                                                                                                             |
+| `markdown-lint.yml`       | PR touching `**/*.md`, `preview/**`                    | markdownlint-cli2 + cspell + PREVIEWS.md sync check                                                                                              |
 | `release.yml`             | Tag push `20*` or manual dispatch                      | Builds `trail-peak-<tag>.zip` (tokens CSS, `tokens.json`, fonts, assets, shadcn theme, docs) and publishes a GitHub Release with generated notes |
-| `version.yml`             | Push to `main`                                         | Writes `VERSION`, prepends entry to `CHANGELOG.md`, updates build badge in `README.md`                |
+| `version.yml`             | Push to `main`                                         | Writes `VERSION`, prepends entry to `CHANGELOG.md`, updates build badge in `README.md`                                                           |
 
 The version workflow commits with `[skip ci]` to avoid loops. Do not manually edit `VERSION` or the `<!-- version:start/end -->` block in `README.md` — they are owned by the workflow.
 
